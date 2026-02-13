@@ -2,7 +2,7 @@ import { HttpTypes } from "./http.types";
 import { GlobalTypes } from "@/types/global.type";
 
 class HttpAdapter {
-    private readonly baseUrl = 'http://localhost:8000';
+    private readonly baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     private async call(params: HttpTypes.RequestParams) {
         const {url, method, body, query} = params;
