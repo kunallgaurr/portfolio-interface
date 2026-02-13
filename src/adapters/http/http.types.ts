@@ -1,0 +1,44 @@
+export namespace HttpTypes {
+    export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
+    export interface RequestParams {
+        url: string,
+        method: HttpMethod;
+        query?: Record<string, string>;
+        body?: Record<string, unknown>;
+    }
+
+    export interface GetWeatherParams {
+        latitude: string;
+        longitude: string;
+    }
+
+    export interface GetWeatherResponse {
+        location: {
+            name: string | null,
+            region: string | null,
+            country: string | null
+        },
+        current: {
+            temp_c: number | null,
+            temp_f: number | null,
+            condition: {
+                text: string | null
+            }
+        }
+    }
+
+    export interface GetQuoteResponse {
+        quote: string,
+        author: string
+    }
+
+    export interface GetDateInfo {
+        date: number,
+        month: string,
+        year: number,
+        day: string,
+        totalDays: number,
+        remainingDays: number
+    }
+}
