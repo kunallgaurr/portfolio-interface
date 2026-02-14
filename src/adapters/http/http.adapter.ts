@@ -75,6 +75,33 @@ class HttpAdapter {
             throw error;
         }
     }
+
+    async getImages (payload: HttpTypes.GetImagesParams): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetImages[]>> {
+        const params: HttpTypes.RequestParams = {
+            url: '/photos',
+            method: 'GET',
+            query: {...payload}
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getStatus (): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetStatus>> {
+        const params: HttpTypes.RequestParams = {
+            url: '/status',
+            method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default new HttpAdapter();

@@ -32,4 +32,24 @@ export namespace ComponentTypes {
         totalDays: number | null,
         remainingDays: number | null
     }
+
+    export interface Images {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        key: string,
+        publicId: string,
+        description: string,
+        variants: {
+            lg: string,
+            md: string,
+            sm: string
+            xl: string
+        }
+    }
+
+    export interface Status {
+        status: string | null,
+        reason: string | null
+    }
 } 

@@ -41,4 +41,29 @@ export namespace HttpTypes {
         totalDays: number,
         remainingDays: number
     }
+
+    export interface GetImagesParams {
+        pageNumber?: string;
+        pageSize?: string;
+    }
+
+    export interface GetImages {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        key: string,
+        publicId: string,
+        description: string,
+        variants: {
+            lg: string,
+            md: string,
+            sm: string
+            xl: string
+        }
+    }
+
+    export interface GetStatus {
+        status: string,
+        reason: string
+    }
 }

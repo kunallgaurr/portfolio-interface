@@ -4,7 +4,7 @@
     --base-background: #0b0a0a;
     --card-background: #211f1f;
     --accent-color: #ba270d;
-    --accent-color-faded: #b12c146b;
+    --accent-color-faded: #ba270d33;
     --font-color: #e0e0e0;
     --font-color-faded: #858585;
 }
@@ -14,6 +14,6 @@ body {
     color: var(--font-color);
     margin: 0;
     padding: 0;
-    overflow: hidden;
     box-sizing: border-box;
+    font-weight: 300;
 }
