@@ -66,4 +66,25 @@ export namespace HttpTypes {
         status: string,
         reason: string
     }
+
+    interface ExperiencePoint {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        content: string,
+        order: number,
+    }
+
+    export interface GetExperience {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        companyName: string,
+        role: string,
+        description: string;
+        startDate: string,
+        endDate: string,
+        isCurrent: boolean,
+        points: ExperiencePoint[]
+    }
 }

@@ -2,64 +2,54 @@
 
 import httpAdapter from "@/adapters/http/http.adapter";
 import { ComponentTypes } from "@/types/components.type";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const DateCard = () => {
-    const [dateInfo, setDateInfo] = useState<ComponentTypes.DateInfo>({
-        date: null,
-        month: null,
-        year: null,
-        day: null,
-        remainingDays: null,
-        totalDays: null,
-    });
+    const [dateInfo, setDateInfo] = useState<ComponentTypes.DateInfo | null>(null);
 
     useEffect(() => {
         async function fetchDateInfo() {
-            const { data } = await httpAdapter.getDateInfo();
-            setDateInfo(data);
+            try {
+                const { data } = await httpAdapter.getDateInfo();
+                setDateInfo(data ?? null);
+            } catch {
+                setDateInfo(null);
+            }
         }
 
         fetchDateInfo();
     }, []);
 
-    const [percentage, setPercentage] = useState<number>(0)
-    useEffect(() => {
-        if(!dateInfo.remainingDays || !dateInfo.totalDays) return;
+    const percentage = useMemo(() => {
+        if (!dateInfo?.remainingDays || !dateInfo?.totalDays) return 0;
 
-        const remainingDays = dateInfo.remainingDays;
-        const totalDays = dateInfo.totalDays
-        const elapsedDays = totalDays - remainingDays;
-        const percentageValue = (elapsedDays / totalDays) * 100; 
+        const elapsed = dateInfo.totalDays - dateInfo.remainingDays;
+        return Math.min((elapsed / dateInfo.totalDays) * 100, 100);
+    }, [dateInfo]);
 
-        setPercentage(percentageValue);
-
-    }, [dateInfo.remainingDays, dateInfo.totalDays])
+    if (!dateInfo) return null;
 
     return (
-        <div className="flex flex-col p-8 bg-[var(--card-background)] rounded-[10px] gap-2">
-            <span className="text-[var(--font-color-faded)] font-semibold">{dateInfo.month?.toUpperCase()}</span>
+        <section className="flex flex-col p-8 bg-[var(--card-background)] rounded-[10px] gap-4">
+            <header>
+                <span className="text-[var(--font-color-faded)] font-semibold">{dateInfo.month?.toUpperCase()}</span>
+            </header>
 
-            <div className="flex flex-col mb-2">
-                <span className="text-6xl">{dateInfo.date}</span>
-                <span>{dateInfo.day}</span>
+            <div className="flex flex-col">
+                <span className="text-6xl font-semibold">{dateInfo.date}</span>
+                <span className="text-sm text-[var(--font-color-faded)]">{dateInfo.day}</span>
             </div>
 
-            <div className="flex gap-2 flex-col">
-                <div className="h-10 bg-[#373535] rounded-[5px] p-2">
-                    <div
-                        className="h-full bg-[var(--card-background)] rounded-[3px]"
-                        style={{
-                            width: `${percentage}%`,
-                        }}
-                    ></div>{" "}
+            <div className="flex flex-col gap-3">
+                <div className="h-10 bg-[#373535] rounded-[5px] p-2 overflow-hidden">
+                    <div className="h-full bg-[var(--accent-color)] rounded-[3px] transition-all duration-500 ease-out" style={{ width: `${percentage}%` }} />
                 </div>
 
-                <span>
+                <span className="text-sm text-[var(--font-color-faded)]">
                     {dateInfo.remainingDays} days left in {dateInfo.year}
                 </span>
             </div>
-        </div>
+        </section>
     );
 };
 

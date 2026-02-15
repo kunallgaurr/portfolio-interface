@@ -102,6 +102,19 @@ class HttpAdapter {
             throw error;
         }
     }
+
+    async getExperience (): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetExperience[]>> {
+        const params: HttpTypes.RequestParams = {
+            url: '/experience',
+            method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default new HttpAdapter();

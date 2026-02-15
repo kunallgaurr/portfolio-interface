@@ -6,31 +6,43 @@ import DateCard from "./date-card";
 import ImageCarousel from "./image-carousel";
 
 const Footer = () => {
-    return <footer className="flex flex-col gap-2 px-[10%] py-[5%]">
-        <div className="grid grid-cols-[2fr_1fr] gap-8">
-            <div className="flex flex-col gap-8">
-                <div className="grid grid-cols-[1fr_1fr] gap-8">
-                    <WeatherCard/>
-                    <DateCard/>
+    return (
+        <footer className="flex flex-col gap-12 px-[10%] py-[5%]">
+            {/* Top Grid */}
+            <div className="grid lg:grid-cols-[2fr_1fr] gap-8">
+                {/* Left Column */}
+                <div className="flex flex-col gap-8">
+                    <div className="grid sm:grid-cols-2 gap-8">
+                        <WeatherCard />
+                        <DateCard />
+                    </div>
+
+                    <ProverbCard />
                 </div>
 
-                <ProverbCard/>
-            </div>
-            <ImageCarousel/>
-        </div>
-
-        <div className="flex justify-between py-[10%]">
-            <div className="flex gap-2">
-                <MousePointer2 />
-                <span>Designed & Built in New Delhi</span>
+                {/* Right Column */}
+                <div className="w-full">
+                    <ImageCarousel />
+                </div>
             </div>
 
-            <div className="flex gap-4">
-                <Link href={'/privacy-policy'} className="hover:text-[var(--font-color-faded)]">Privacy Policy</Link>
-                <span>Kunal Gaur &copy; 2026</span>
+            {/* Bottom Section */}
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-6 pt-10 border-t border-[var(--accent-color-faded)] text-sm">
+                <div className="flex items-center gap-2 text-[var(--font-color-faded)]">
+                    <MousePointer2 size={16} />
+                    <span>Designed & Built in New Delhi</span>
+                </div>
+
+                <div className="flex items-center gap-6">
+                    <Link href="/privacy-policy" className="hover:text-[var(--accent-color)] transition-colors">
+                        Privacy Policy
+                    </Link>
+
+                    <span className="text-[var(--font-color-faded)]">© {new Date().getFullYear()} Kunal Gaur</span>
+                </div>
             </div>
-        </div>
-    </footer>;
+        </footer>
+    );
 };
 
 export default Footer;

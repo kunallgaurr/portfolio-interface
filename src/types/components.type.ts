@@ -52,4 +52,25 @@ export namespace ComponentTypes {
         status: string | null,
         reason: string | null
     }
+
+    interface ExperiencePoint {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        content: string,
+        order: number,
+    }
+
+    export interface Experience {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        companyName: string,
+        role: string,
+        description: string;
+        startDate: string,
+        endDate: string,
+        isCurrent: boolean,
+        points: ExperiencePoint[]
+    }
 } 
