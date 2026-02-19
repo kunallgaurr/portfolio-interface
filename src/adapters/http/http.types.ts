@@ -87,4 +87,10 @@ export namespace HttpTypes {
         isCurrent: boolean,
         points: ExperiencePoint[]
     }
+
+    export interface SendMessageParams {
+        name: string;
+        email: string;
+        message: string;
+    }
 }

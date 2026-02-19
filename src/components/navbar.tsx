@@ -49,7 +49,7 @@ const Navbar = () => {
     }, [router]);
 
     return (
-        <nav className="bg-[var(--card-background)] rounded-[10px] p-3 flex flex-col text-sm" aria-label="Primary Navigation">
+        <nav className="bg-[var(--card-background)] w-full rounded-[10px] p-3 flex flex-col text-sm" aria-label="Primary Navigation">
             {/* Brand */}
             <Link href="/" className={`${linkBaseClasses} mb-6 font-semibold text-[var(--font-color-faded)]`}>
                 <span>kunalgaur.in</span>

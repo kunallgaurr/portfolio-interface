@@ -15,6 +15,7 @@ class HttpAdapter {
         }
 
         const headers = new Headers();
+        headers.set("Content-Type", "application/json");
 
         let response;
         try {
@@ -107,6 +108,20 @@ class HttpAdapter {
         const params: HttpTypes.RequestParams = {
             url: '/experience',
             method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async sendMesssage (payload: HttpTypes.SendMessageParams): Promise<GlobalTypes.BaseApiResponse<boolean>> {
+        const params: HttpTypes.RequestParams = {
+            url: '/contact',
+            method: 'POST',
+            body: payload as unknown as Record<string, unknown>
         }
 
         try {

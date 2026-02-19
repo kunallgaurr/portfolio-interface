@@ -42,43 +42,52 @@ const NAVBAR_ITEMS: NavbarItems[] = [
 
 const CONNECT_ITEMS = [
     {
-        name: 'Calender',
-        route: '/about',
+        name: "Calendar",
+        route: "https://www.cal.eu/kunal-gaur",
         icon: Calendar,
-        key: 'C'
+        key: "C",
+        action: "external",
     },
     {
-        name: 'Email',
-        route: '/about',
+        name: "Email",
+        route: "",
         icon: Mail,
-        key: 'M'
+        key: "M",
+        action: "copy-email",
     },
     {
-        name: 'Github',
-        route: '/about',
+        name: "Github",
+        route: "https://github.com/kunallgaurr",
         icon: Github,
-        key: 'G'
+        key: "G",
+        action: "external",
     },
     {
-        name: 'Text me',
-        route: '/about',
+        name: "Message me",
+        route: "/contact",
         icon: MessageCircle,
-        key: 'T'
+        key: "T",
+        action: "navigate",
     },
     {
-        name: 'Read.cv',
-        route: '/about',
+        name: "Read.cv",
+        route: `${process.env.NEXT_PUBLIC_HOST}/kunal_gaur_resume.pdf`,
         icon: File,
-        key: 'R'
+        key: "R",
+        action: "external",
     },
     {
-        name: 'LinkedIn',
-        route: '/about',
+        name: "LinkedIn",
+        route: "https://www.linkedin.com/in/kunal-gaur-connect/",
         icon: Linkedin,
-        key: 'L'
+        key: "L",
+        action: "external",
     },
-]
+];
 
 export const constants = {
-    NAVBAR_ITEMS
-}
+    NAVBAR_ITEMS,
+    CONNECT_ITEMS,
+    EMAIL: "http.kunalgaur@outlook.com",
+    PHONE_NUMBER: "+91 7303421656",
+};

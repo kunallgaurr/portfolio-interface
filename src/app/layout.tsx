@@ -6,6 +6,7 @@ import NavbarLayout from "@/components/navbar-layout";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Metadata } from "next";
+import ConnectLinks from "@/components/connect-links";
 
 const firaSans = Fira_Sans({
     style: ["normal", "italic"],
@@ -55,9 +56,10 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<GlobalTypes.BaseLayout> = ({ children }) => {
     return (
         <html>
-            <body className={firaSans.className + ` grid grid-cols-[1fr_4fr]`}>
+            <body className={firaSans.className + ` lg:grid lg:grid-cols-[1fr_4fr]`}>
                 <NavbarLayout>
                     <Navbar />
+                    <ConnectLinks/>
                 </NavbarLayout>
                 <div>
                     {children}

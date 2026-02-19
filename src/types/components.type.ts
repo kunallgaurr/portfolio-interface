@@ -73,4 +73,34 @@ export namespace ComponentTypes {
         isCurrent: boolean,
         points: ExperiencePoint[]
     }
+
+    export interface ConnectItemProps {
+        icon: React.ElementType;
+        name: string;
+        route: string;
+        shortcut: string;
+        action: "external" | "navigate" | "copy-email";
+    };
+
+    export interface ConnectItemProps {
+        icon: React.ElementType;
+        name: string;
+        route: string;
+        shortcut: string;
+        action: "external" | "navigate" | "copy-email";
+    };
+
+    export interface Input {
+        label?: string;
+        name: string;
+        type?: string;
+        placeholder?: string;
+        value?: string;
+        onChange?: React.ChangeEventHandler<HTMLInputElement>;
+        required?: boolean;
+        error?: string;
+        disabled?: boolean;
+    }
+
+
 } 
