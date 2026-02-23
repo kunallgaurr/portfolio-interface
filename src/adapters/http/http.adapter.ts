@@ -16,6 +16,15 @@ class HttpAdapter {
 
         const headers = new Headers();
         headers.set("Content-Type", "application/json");
+        headers.set('x-secret-key', process.env.NEXT_PUBLIC_SECURITY_KEY!)
+
+        let deviceId = localStorage.getItem('deviceId');
+        if(!deviceId) {
+            deviceId = crypto.randomUUID();
+            localStorage.setItem('deviceId', deviceId);
+        }
+
+        headers.set('x-device-id', deviceId);
 
         let response;
         try {
