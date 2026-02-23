@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import NavbarItem from "./navbar-items";
+import { motion } from "framer-motion";
 
 const NavbarButton = ({ char }: { char: string }) => {
     return (
@@ -49,23 +50,66 @@ const Navbar = () => {
     }, [router]);
 
     return (
-        <nav className="bg-[var(--card-background)] w-full rounded-[10px] p-3 flex flex-col text-sm" aria-label="Primary Navigation">
+        <motion.nav
+            className="bg-[var(--card-background)] w-full rounded-[10px] p-3 flex flex-col text-sm"
+            aria-label="Primary Navigation"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 180, damping: 18 }}
+        >
             {/* Brand */}
-            <Link href="/" className={`${linkBaseClasses} mb-6 font-semibold text-[var(--font-color-faded)]`}>
-                <span>kunalgaur.in</span>
-                <NavbarButton char="H" />
-            </Link>
+            <motion.div
+                whileHover={{ scale: 1.02, x: 2 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            >
+                <Link href="/" className={`${linkBaseClasses} mb-6 font-semibold text-[var(--font-color-faded)]`}>
+                    <span>kunalgaur.in</span>
+                    <NavbarButton char="H" />
+                </Link>
+            </motion.div>
 
             {/* Section Label */}
-            <span className="px-2 mb-2 text-xs tracking-wide uppercase font-semibold text-[var(--font-color-faded)]">Browse</span>
+            <span className="px-2 mb-2 text-xs tracking-wide uppercase font-semibold text-[var(--font-color-faded)]">
+                Browse
+            </span>
 
             {/* Navigation Items */}
-            <div className="flex flex-col gap-1">
+            <motion.div
+                className="flex flex-col gap-1"
+                initial="hidden"
+                animate="show"
+                variants={{
+                    hidden: {},
+                    show: {
+                        transition: {
+                            staggerChildren: 0.035,
+                            delayChildren: 0.04,
+                        },
+                    },
+                }}
+            >
                 {constants.NAVBAR_ITEMS.map(({ icon, key, name, route }) => (
-                    <NavbarItem key={key} icon={icon} name={name} route={route} shortcut={key} />
+                    <motion.div
+                        key={key}
+                        variants={{
+                            hidden: { opacity: 0, x: -10 },
+                            show: {
+                                opacity: 1,
+                                x: 0,
+                                transition: { type: "spring", stiffness: 260, damping: 22 },
+                            },
+                        }}
+                        whileHover={{
+                            x: 4,
+                            scale: 1.01,
+                            transition: { type: "spring", stiffness: 360, damping: 22 },
+                        }}
+                    >
+                        <NavbarItem icon={icon} name={name} route={route} shortcut={key} />
+                    </motion.div>
                 ))}
-            </div>
-        </nav>
+            </motion.div>
+        </motion.nav>
     );
 };
 

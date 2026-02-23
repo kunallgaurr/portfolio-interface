@@ -7,7 +7,9 @@ type TextareaProps =
   };
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ label, error, ...props }, ref) => {
+  ({ label, error, className = "", ...props }, ref) => {
+    const hasError = Boolean(error);
+
     return (
       <div className="flex flex-col gap-2 w-full">
         {label && (
@@ -19,7 +21,10 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <textarea
           ref={ref}
           {...props}
-          className="px-3 py-2 rounded-md bg-[var(--card-background)] border border-[#2a2f3a] focus:border-[var(--accent-color)] outline-none resize-none text-sm"
+          aria-invalid={hasError || undefined}
+          className={`px-3 py-2 rounded-md bg-[#151515] border ${
+            hasError ? "border-red-500/70" : "border-[#2a2f3a]"
+          } text-sm text-[var(--font-color)] placeholder:text-[#666] shadow-sm focus:outline-none focus:border-[var(--accent-color)] focus:shadow-[0_0_0_1px_rgba(0,0,0,0.8)] resize-none transition-colors transition-shadow ${className}`}
         />
 
         {error && (

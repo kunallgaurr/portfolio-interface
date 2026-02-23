@@ -60,7 +60,7 @@ class HttpAdapter {
         }
     }
 
-    async getProverb (): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetQuoteResponse>> {
+    async getProverb (): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetQuoteResponse[]>> {
         const params: HttpTypes.RequestParams = {
             url: '/quote',
             method: 'GET'

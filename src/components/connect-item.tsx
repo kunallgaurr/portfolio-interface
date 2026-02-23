@@ -35,7 +35,7 @@ const ConnectItem: React.FC<ComponentTypes.ConnectItemProps> = ({ icon: Icon, na
     };
 
     return (
-        <button onClick={handleClick} className="p-2 cursor-pointer flex items-center justify-between rounded-md transition-colors hover:bg-[var(--accent-color-faded)] hover:text-[var(--accent-color)]">
+        <button onClick={handleClick} className="p-2 w-full cursor-pointer flex items-center justify-between rounded-md transition-colors hover:bg-[var(--accent-color-faded)] hover:text-[var(--accent-color)]">
             <div className="flex items-center gap-2">
                 <Icon size={16} />
                 <span>{name}</span>

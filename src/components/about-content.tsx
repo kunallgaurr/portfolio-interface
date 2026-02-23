@@ -1,8 +1,17 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 
 const AboutContent = () => {
   return (
-    <section className="flex flex-col gap-6 w-[60%] leading-relaxed">
+    <motion.section
+      className="flex flex-col gap-6 w-[60%] leading-relaxed"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+    >
       <header className="mb-4">
         <h2 className="text-xl font-semibold text-[var(--font-color-faded)]">
           So, who’s this Kunal guy?
@@ -43,7 +52,7 @@ const AboutContent = () => {
         or just talk about building things on the internet —
         I’m always open to thoughtful conversations.
       </p>
-    </section>
+    </motion.section>
   );
 };
 
