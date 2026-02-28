@@ -5,7 +5,7 @@ type NavbarItemProps = {
   icon: React.ElementType;
   name: string;
   route: string;
-  shortcut: string;
+  shortcut?: string;
 };
 
 const NavbarItem = ({
@@ -24,9 +24,9 @@ const NavbarItem = ({
         <span>{name}</span>
       </div>
 
-      <span className="bg-[#85858555] rounded-md min-w-[18px] h-[18px] text-[10px] flex items-center justify-center text-[var(--font-color-faded)]">
+      {shortcut && <span className="bg-[#85858555] rounded-md min-w-[18px] h-[18px] text-[10px] flex items-center justify-center text-[var(--font-color-faded)]">
         {shortcut}
-      </span>
+      </span>}
     </Link>
   );
 };

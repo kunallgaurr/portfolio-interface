@@ -78,7 +78,7 @@ export namespace ComponentTypes {
         icon: React.ElementType;
         name: string;
         route: string;
-        shortcut: string;
+        shortcut?: string;
         action: "external" | "navigate" | "copy-email";
     };
 
@@ -86,7 +86,7 @@ export namespace ComponentTypes {
         icon: React.ElementType;
         name: string;
         route: string;
-        shortcut: string;
+        shortcut?: string;
         action: "external" | "navigate" | "copy-email";
     };
 

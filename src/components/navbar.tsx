@@ -54,7 +54,7 @@ const Navbar = () => {
 
     return (
         <motion.nav
-            className="bg-[var(--card-background)] w-full rounded-[10px] p-3 sm:flex flex-col text-sm hidden"
+            className="bg-[var(--card-background)] w-full rounded-[10px] p-3 hidden lg:flex flex-col text-sm"
             aria-label="Primary Navigation"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}

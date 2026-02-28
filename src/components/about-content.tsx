@@ -16,7 +16,7 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
 
 const AboutContent = () => {
   return (
-    <section className="flex flex-col gap-6 w-[60%] leading-relaxed">
+    <section className="flex flex-col gap-6 w-full max-w-2xl leading-relaxed">
       <motion.header
         className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]"
         {...fadeInUp}

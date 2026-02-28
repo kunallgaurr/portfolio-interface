@@ -20,7 +20,7 @@ const Home = () => {
     return (
         <div className="px-[10%] py-[5%] min-h-screen flex flex-col gap-2">
             <motion.div
-                className="flex justify-between"
+                className="flex justify-between gap-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -29,8 +29,8 @@ const Home = () => {
                 <Status />
             </motion.div>
 
-            <div className="flex items-center flex-1">
-                <div className="flex w-[60%] text-3xl leading-relaxed">
+            <div className="flex items-center flex-1 mt-6">
+                <div className="flex w-full md:w-[60%] text-2xl md:text-3xl leading-relaxed">
                     <motion.span
                         className="text-[var(--font-color-faded)]"
                         initial="hidden"

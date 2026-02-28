@@ -21,7 +21,7 @@ const Picks = () => {
 
   return (
     <div className="min-h-screen px-[10%] py-[5%]">
-      <div className="flex flex-col gap-10 w-[60%] max-w-2xl leading-relaxed">
+      <div className="flex flex-col gap-10 w-full max-w-2xl leading-relaxed">
         <motion.header {...fadeInUp} className="flex flex-col gap-1">
           <h1
             className="text-2xl  text-[var(--font-color)] cursor-default select-none"

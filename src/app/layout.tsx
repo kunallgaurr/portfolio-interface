@@ -4,6 +4,7 @@ import { Fira_Sans } from "next/font/google";
 import "./globals.css";
 import NavbarLayout from "@/components/navbar-layout";
 import Navbar from "@/components/navbar";
+import MobileNavbar from "@/components/mobile-navbar";
 import Footer from "@/components/footer";
 import { Metadata } from "next";
 import ConnectLinks from "@/components/connect-links";
@@ -59,7 +60,8 @@ const RootLayout: React.FC<GlobalTypes.BaseLayout> = ({ children }) => {
             <body className={firaSans.className + ` lg:grid lg:grid-cols-[1fr_4fr]`}>
                 <NavbarLayout>
                     <Navbar />
-                    <ConnectLinks/>
+                    <ConnectLinks />
+                    <MobileNavbar />
                 </NavbarLayout>
                 <div>
                     {children}
