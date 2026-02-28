@@ -90,7 +90,7 @@ const PhotosPage = () => {
     }, [loading, hasMore]);
 
     return (
-        <div className="min-h-screen px-[10%] py-[5%]">
+        <div className="min-h-screen px-[10%] sm:px-[5%] py-[5%]">
             <div className="flex flex-col gap-12 w-full max-w-6xl">
                 <header className="flex flex-col gap-1">
                     <h1 className="text-2xl font-semibold text-[var(--font-color)]">Photos</h1>
