@@ -1,10 +1,8 @@
 "use client";
 
 import { constants } from "@/utils/constants";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Copy, Check } from "lucide-react";
 import { ComponentTypes } from "@/types/components.type";
 import ConnectItem from "./connect-item";
 import { motion } from "framer-motion";
@@ -20,6 +18,7 @@ const ConnectLinks = () => {
 
             if (isTyping) return;
             if (event.repeat) return;
+            if (event.metaKey || event.ctrlKey) return;
 
             const pressedKey = event.key.toLowerCase();
 

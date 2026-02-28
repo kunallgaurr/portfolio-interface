@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Status from "@/components/status";
 import TimeCard from "@/components/timecard";
@@ -21,16 +21,16 @@ const Home = () => {
         <div className="px-[10%] py-[5%] min-h-screen flex flex-col gap-2">
             <motion.div
                 className="flex justify-between"
-                initial={{ opacity: 0, y: -16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 120, damping: 18 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
             >
                 <TimeCard />
                 <Status />
             </motion.div>
 
             <div className="flex items-center flex-1">
-                <div className="flex w-[60%] text-4xl">
+                <div className="flex w-[60%] text-3xl leading-relaxed">
                     <motion.span
                         className="text-[var(--font-color-faded)]"
                         initial="hidden"
@@ -39,8 +39,8 @@ const Home = () => {
                             hidden: {},
                             show: {
                                 transition: {
-                                    staggerChildren: 0.03,
-                                    delayChildren: 0.12,
+                                    staggerChildren: 0.02,
+                                    delayChildren: 0.08,
                                 },
                             },
                         }}
@@ -64,24 +64,12 @@ const Home = () => {
                                 <motion.span
                                     // eslint-disable-next-line react/no-array-index-key
                                     key={`${normalized}-${i}`}
-                                    className={`inline-block ${isHighlighted ? "text-[var(--font-color)]" : ""}`}
+                                    className={isHighlighted ? "text-[var(--font-color)]" : ""}
                                     variants={{
-                                        hidden: { opacity: 0, y: 12, filter: "blur(8px)" },
-                                        show: {
-                                            opacity: 1,
-                                            y: 0,
-                                            filter: "blur(0px)",
-                                            transition: {
-                                                type: "spring",
-                                                stiffness: 220,
-                                                damping: 22,
-                                            },
-                                        },
+                                        hidden: { opacity: 0 },
+                                        show: { opacity: 1 },
                                     }}
-                                    whileHover={{
-                                        y: -2,
-                                        transition: { type: "spring", stiffness: 400, damping: 20 },
-                                    }}
+                                    transition={{ duration: 0.2 }}
                                 >
                                     {token}
                                 </motion.span>

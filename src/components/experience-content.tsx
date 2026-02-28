@@ -23,9 +23,11 @@ const formatDateRange = (start: string, end?: string | null, isCurrent?: boolean
 };
 
 const ExperienceItem = ({ exp, index }: { exp: ComponentTypes.Experience; index: number }) => {
+    const dateRange = formatDateRange(exp.startDate, exp.endDate, exp.isCurrent);
+
     return (
         <motion.article
-            className="flex flex-col gap-6"
+            className="relative flex flex-col gap-6 pl-6 border-l-2 border-[var(--accent-color-faded)] hover:border-[var(--accent-color)] transition-colors"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -35,24 +37,45 @@ const ExperienceItem = ({ exp, index }: { exp: ComponentTypes.Experience; index:
                 damping: 20,
                 delay: index * 0.06,
             }}
+            whileHover={{ x: 4 }}
         >
-            <header className="flex items-center justify-between">
-                <div className="flex flex-col">
-                    <span className="text-lg font-medium">{exp.role}</span>
+            <header className="flex items-center justify-between gap-4">
+                <div className="flex flex-col gap-1">
+                    <span className="text-lg font-medium text-[var(--font-color)]">{exp.role}</span>
                     <span className="text-[var(--font-color-faded)] text-xs">{exp.companyName}</span>
                 </div>
-
-                <span className="text-sm text-[var(--font-color-faded)]">{formatDateRange(exp.startDate, exp.endDate, exp.isCurrent)}</span>
+                <div className="flex items-center gap-2 shrink-0">
+                    {exp.isCurrent && (
+                        <span className="rounded-full bg-[var(--accent-color-faded)] px-2 py-0.5 text-xs font-medium text-[var(--accent-color)]">
+                            Present
+                        </span>
+                    )}
+                    <span className="text-sm text-[var(--font-color-faded)]">{dateRange}</span>
+                </div>
             </header>
 
-            {exp.description && <p className="text-[var(--font-color-faded)] leading-relaxed">{exp.description}</p>}
+            {exp.description && (
+                <p className="text-[var(--font-color-faded)] leading-relaxed">{exp.description}</p>
+            )}
 
             {exp.points?.length > 0 && (
-                <ul className="flex flex-col gap-4 list-disc pl-5">
-                    {exp.points.map((point) => (
-                        <li key={point.id} className="leading-relaxed">
+                <ul className="flex flex-col gap-3 list-disc pl-5">
+                    {exp.points.map((point, i) => (
+                        <motion.li
+                            key={point.id}
+                            className="leading-relaxed"
+                            initial={{ opacity: 0, x: -8 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 140,
+                                damping: 22,
+                                delay: index * 0.06 + i * 0.04,
+                            }}
+                        >
                             {point.content}
-                        </li>
+                        </motion.li>
                     ))}
                 </ul>
             )}

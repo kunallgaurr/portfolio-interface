@@ -2,7 +2,8 @@
 
 import httpAdapter from "@/adapters/http/http.adapter";
 import { ComponentTypes } from "@/types/components.type";
-import { MapPin, MousePointer2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { CloudOff, MapPin, MousePointer2 } from "lucide-react";
 import React, { useCallback, useEffect, useState } from "react";
 
 type LocationStatus = "idle" | "loading" | "granted" | "denied" | "error" | "unsupported";
@@ -62,33 +63,41 @@ const WeatherCard = () => {
     const [weatherLoading, setWeatherLoading] = useState(false);
     const [weatherError, setWeatherError] = useState(false);
 
-    useEffect(() => {
-        async function fetchWeather() {
-            if (!coordinates.latitude || !coordinates.longitude) return;
+    const fetchWeather = useCallback(async () => {
+        if (!coordinates.latitude || !coordinates.longitude) return;
 
-            setWeatherLoading(true);
-            setWeatherError(false);
-            try {
-                const { data } = await httpAdapter.getWeather({
-                    latitude: String(coordinates.latitude),
-                    longitude: String(coordinates.longitude),
-                });
+        setWeatherLoading(true);
+        setWeatherError(false);
+        try {
+            const response = await httpAdapter.getWeather({
+                latitude: String(coordinates.latitude),
+                longitude: String(coordinates.longitude),
+            });
 
-                if (!data || !Object.keys(data).length) {
-                    throw new Error("Invalid data received from HTTP Adapter");
-                }
-
-                setWeather(data);
-            } catch (error) {
-                console.error(error);
+            const statusCode = response?.status?.code;
+            if (statusCode !== 200) {
                 setWeatherError(true);
-            } finally {
-                setWeatherLoading(false);
+                return;
             }
-        }
 
-        fetchWeather();
+            const data = response?.data;
+            if (!data || !Object.keys(data).length) {
+                setWeatherError(true);
+                return;
+            }
+
+            setWeather(data);
+        } catch (error) {
+            console.error(error);
+            setWeatherError(true);
+        } finally {
+            setWeatherLoading(false);
+        }
     }, [coordinates.latitude, coordinates.longitude]);
+
+    useEffect(() => {
+        fetchWeather();
+    }, [fetchWeather]);
 
     const [temperature, setTemperature] = useState<"temp_c" | "temp_f">("temp_c");
 
@@ -141,7 +150,7 @@ const WeatherCard = () => {
         return (
             <div className={cardClassName}>
                 <div className="flex justify-between">
-                    <div className="h-5 w-32 rounded bg-[var(--card-background)] bg-[#85858555] animate-pulse" />
+                    <div className="h-5 w-32 rounded bg-[#85858555] animate-pulse" />
                     <div className="h-5 w-5 rounded bg-[#85858555] animate-pulse" />
                 </div>
                 <div className="mb-4 flex items-baseline gap-2">
@@ -157,17 +166,61 @@ const WeatherCard = () => {
         );
     }
 
+    if (weatherError) {
+        return (
+            <motion.div
+                className={cardClassName}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 160, damping: 22 }}
+            >
+                <div className="flex flex-col items-center justify-center gap-4 py-4 text-center">
+                    <CloudOff
+                        size={36}
+                        className="text-[var(--font-color-faded)]"
+                        aria-hidden
+                    />
+                    <p className="text-sm text-[var(--font-color-faded)]">
+                        Couldn&apos;t load the weather. Something went wrong on our end.
+                    </p>
+                    <button
+                        type="button"
+                        onClick={fetchWeather}
+                        className="rounded-md border border-white/10 px-4 py-2 text-sm font-medium text-[var(--font-color)] hover:bg-[var(--accent-color-faded)] transition-colors"
+                    >
+                        Try again
+                    </button>
+                </div>
+            </motion.div>
+        );
+    }
+
     return (
-        <div className={cardClassName}>
-            <div className="flex justify-between">
+        <motion.div
+            className={cardClassName}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 160, damping: 22 }}
+        >
+            <motion.div
+                className="flex justify-between"
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.05, type: "spring", stiffness: 200, damping: 22 }}
+            >
                 <span className="text-[var(--font-color-faded)] font-semibold">
                     {weather.location?.region?.toUpperCase() ?? "..."},{" "}
                     {weather.location?.country?.toUpperCase() ?? "..."}
                 </span>
                 <MousePointer2 className="text-[var(--font-color-faded)]" />
-            </div>
+            </motion.div>
 
-            <div className="mb-4">
+            <motion.div
+                className="mb-4"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 22 }}
+            >
                 <span className="text-6xl">
                     {weather.current[temperature] ?? "—"}&deg;
                 </span>
@@ -194,14 +247,16 @@ const WeatherCard = () => {
                         F
                     </span>
                 </div>
-            </div>
+            </motion.div>
 
-            <div>
-                {weatherError
-                    ? "Unable to load weather"
-                    : weather.current?.condition?.text ?? "—"}
-            </div>
-        </div>
+            <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, type: "spring", stiffness: 200, damping: 22 }}
+            >
+                {weather.current?.condition?.text ?? "—"}
+            </motion.div>
+        </motion.div>
     );
 };
 

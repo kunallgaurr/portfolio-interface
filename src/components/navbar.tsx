@@ -31,6 +31,9 @@ const Navbar = () => {
             // Ignore key repeat
             if (event.repeat) return;
 
+            // Let browser handle Cmd/Ctrl+R (refresh) and other modifier shortcuts
+            if (event.metaKey || event.ctrlKey) return;
+
             const pressedKey = event.key.toLowerCase();
 
             const matchedItem = constants.NAVBAR_ITEMS.find((item) => item.key.toLowerCase() === pressedKey);
@@ -51,7 +54,7 @@ const Navbar = () => {
 
     return (
         <motion.nav
-            className="bg-[var(--card-background)] w-full rounded-[10px] p-3 flex flex-col text-sm"
+            className="bg-[var(--card-background)] w-full rounded-[10px] p-3 sm:flex flex-col text-sm hidden"
             aria-label="Primary Navigation"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
