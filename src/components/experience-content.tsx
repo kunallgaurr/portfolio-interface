@@ -102,7 +102,7 @@ const ExperienceContent = () => {
 
     if (loading) {
         return (
-            <section className="flex flex-col gap-10 w-full max-w-2xl">
+            <section className="flex flex-col gap-10 w-full">
                 {[1, 2].map((i) => (
                     <article key={i} className="flex flex-col gap-6">
                         <header className="flex items-center justify-between">

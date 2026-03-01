@@ -4,7 +4,7 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen w-full px-[10%] py-[5%] flex items-center justify-center">
+    <div className="min-h-screen w-full lg:px-[10%] px-[10px] lg:py-[5%] py-[10%] flex items-center justify-center">
       <section className="relative flex flex-col p-8 bg-[var(--card-background)] rounded-[10px] gap-6 max-w-xl w-full overflow-hidden">
         <div className="pointer-events-none absolute -top-10 -right-10 h-28 w-28 rounded-full bg-[var(--accent-color-faded)] blur-2xl opacity-60 animate-pulse" />
         <header className="flex items-start justify-between gap-4">

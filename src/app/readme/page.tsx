@@ -22,7 +22,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 
 const ReadMe = () => {
   return (
-    <div className="min-h-screen px-[10%] py-[5%]">
+    <div className="min-h-screen lg:px-[10%] px-[10px] lg:py-[5%] py-[10%]">
       <div className="flex flex-col gap-6 w-full max-w-2xl leading-relaxed">
         <motion.p {...fadeInUp} className="text-lg">
           Welcome to my little experiment on the internet.

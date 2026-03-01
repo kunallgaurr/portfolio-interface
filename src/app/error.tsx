@@ -14,9 +14,9 @@ type ErrorProps = {
 
 const Error = ({ reset }: ErrorProps) => {
     return (
-        <div className="min-h-screen w-full px-[10%] py-[5%] flex items-center justify-center">
+        <div className="min-h-screen w-full lg:px-[10%] px-[10px] lg:py-[5%] py-[10%] flex items-center justify-center">
             <motion.section
-                className="flex flex-col p-8 bg-[var(--card-background)] rounded-[10px] gap-6 max-w-xl w-full"
+                className="flex flex-col lg:p-8 p-[10px] bg-[var(--card-background)] rounded-[10px] gap-6 max-w-xl w-full"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 160, damping: 20 }}

@@ -4,7 +4,7 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div className='min-h-screen px-[10%] py-[5%] flex flex-col gap-20'>
+    <div className='min-h-[calc(100svh-100px)] lg:px-[10%] px-[10px] py-[10%] flex flex-col gap-20'>
         <AboutContent/>
         <ExperienceContent/>
     </div>

@@ -90,7 +90,7 @@ const PhotosPage = () => {
     }, [loading, hasMore]);
 
     return (
-        <div className="min-h-screen px-[10%] sm:px-[5%] py-[5%]">
+        <div className="min-h-screen lg:px-[10%] lg:py-[5%] py-[10%] px-[10px]">
             <div className="flex flex-col gap-12 w-full max-w-6xl">
                 <header className="flex flex-col gap-1">
                     <h1 className="text-2xl font-semibold text-[var(--font-color)]">Photos</h1>
@@ -100,7 +100,7 @@ const PhotosPage = () => {
                 </header>
 
                 {images.length === 0 && loading ? (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px] grid-flow-dense">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:gap-4 gap-[10px] auto-rows-[200px] grid-flow-dense">
                         {Array.from({ length: PAGE_SIZE }).map((_, i) => (
                             <div
                                 key={i}
@@ -118,7 +118,7 @@ const PhotosPage = () => {
                     <p className="text-[var(--font-color-faded)]">No photos yet.</p>
                 ) : (
                     <>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px] grid-flow-dense">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:gap-4 gap-[10px] auto-rows-[200px] grid-flow-dense">
                             {images.map((image, i) => (
                                 <PhotoTile
                                     key={image.id}

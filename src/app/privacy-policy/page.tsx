@@ -13,7 +13,7 @@ const fadeInUp = {
 const PrivacyPolicy = () => {
     return (
         <div className="min-h-screen px-[10%] py-[5%]">
-            <div className="flex flex-col gap-5 w-full max-w-2xl">
+            <div className="flex flex-col gap-5 w-full md:w-[60%]">
                 <motion.div
                     className="flex items-center gap-3"
                     {...fadeInUp}

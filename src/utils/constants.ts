@@ -63,7 +63,7 @@ const CONNECT_ITEMS = [
         action: "external",
     },
     {
-        name: "Message me",
+        name: "Text me",
         route: "/contact",
         icon: MessageCircle,
         key: "T",

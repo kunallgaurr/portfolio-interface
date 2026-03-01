@@ -20,7 +20,7 @@ const Picks = () => {
   const [cafeReveal, setCafeReveal] = useState(false);
 
   return (
-    <div className="min-h-screen px-[10%] py-[5%]">
+    <div className="min-h-screen lg:px-[10%] px-[10px] lg:py-[5%] py-[10%]">
       <div className="flex flex-col gap-10 w-full max-w-2xl leading-relaxed">
         <motion.header {...fadeInUp} className="flex flex-col gap-1">
           <h1

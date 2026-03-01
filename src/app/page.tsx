@@ -18,7 +18,7 @@ const Home = () => {
     const tokens = React.useMemo(() => intro.split(/(\s+)/), []);
 
     return (
-        <div className="px-[10%] py-[5%] min-h-screen flex flex-col gap-2">
+        <div className="lg:px-[10%] px-[10px] lg:py-[5%] py-[10px] min-h-[calc(100svh-100px)] flex flex-col gap-2">
             <motion.div
                 className="flex justify-between gap-4"
                 initial={{ opacity: 0 }}

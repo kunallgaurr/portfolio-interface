@@ -33,14 +33,14 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="px-[10%] py-[8vh] flex justify-center">
+        <div className="lg:px-[10%] px-[10px] lg:py-[8vh] py-[10%] flex justify-center">
             <motion.div
                 className="relative flex flex-col gap-8 w-full max-w-xl"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 140, damping: 18 }}
             >
-                <div className="pointer-events-none absolute -top-16 -right-16 h-32 w-32 rounded-full bg-[var(--accent-color-faded)] blur-3xl opacity-70" />
+                <div className="pointer-events-none absolute lg:-top-16 lg:-right-16 h-32 w-full rounded-full bg-[var(--accent-color-faded)] blur-3xl opacity-70" />
 
                 {/* Heading */}
                 <motion.div
@@ -63,7 +63,7 @@ const ContactForm = () => {
                 {/* Form */}
                 <motion.form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="flex flex-col gap-6 bg-[var(--card-background)]/95 p-8 rounded-xl border border-white/5 shadow-[0_18px_45px_rgba(0,0,0,0.75)]"
+                    className="flex flex-col gap-6 bg-[var(--card-background)]/95 lg:p-8 p-[10px] rounded-xl border border-white/5 shadow-[0_18px_45px_rgba(0,0,0,0.75)]"
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.12, type: "spring", stiffness: 160, damping: 20 }}

@@ -5,8 +5,9 @@ import ConnectItem from "./connect-item";
 import NavbarItem from "./navbar-items";
 import { ComponentTypes } from "@/types/components.type";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Hamburger, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 const MobileNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,6 @@ const MobileNavbar = () => {
                 <motion.button
                     ref={toggleRef}
                     type="button"
-                    onClick={() => setIsOpen((prev) => !prev)}
                     className="relative z-20 mx-auto flex items-center justify-between gap-4 rounded-full bg-[var(--card-background)]/95 border border-white/10 px-4 py-2 text-xs text-[var(--font-color-faded)] shadow-lg w-full max-w-xs"
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -46,13 +46,13 @@ const MobileNavbar = () => {
                     aria-expanded={isOpen}
                     aria-label={isOpen ? "Close navigation" : "Open navigation"}
                 >
-                    <span className="font-medium text-[var(--font-color)]">kunalgaur.in</span>
+                    <Link href="/" className="font-medium text-[var(--font-color)]">kunalgaur.in</Link>
                     <motion.span
                         animate={{ rotate: isOpen ? 90 : 0 }}
                         transition={{ type: "spring", stiffness: 260, damping: 20 }}
                         className="flex items-center justify-center rounded-full bg-[#85858555] p-1"
                     >
-                        {isOpen ? <X size={16} /> : <Menu size={16} />}
+                        {isOpen ? <X size={16} onClick={() => setIsOpen((prev) => !prev)}/> : <Hamburger size={16} onClick={() => setIsOpen((prev) => !prev)}/>}
                     </motion.span>
                 </motion.button>
 
@@ -72,16 +72,11 @@ const MobileNavbar = () => {
                             <motion.div
                                 ref={sheetRef}
                                 initial={{ opacity: 0, y: 24 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                animate={{ opacity: 1, y: -10 }}
                                 exit={{ opacity: 0, y: 24 }}
                                 transition={{ type: "spring", stiffness: 220, damping: 24 }}
-                                className="absolute left-0 right-0 bottom-14 z-10 rounded-2xl bg-[var(--card-background)]/98 border border-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.75)] backdrop-blur-md p-3 flex flex-col gap-3"
+                                className="absolute left-[10px] right-[10px] bottom-14 z-10 rounded-2xl bg-[var(--card-background)]/98 border border-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.75)] backdrop-blur-md p-3 flex flex-col gap-3 w-[calc(100%-20px)]"
                             >
-                                <div className="flex items-center justify-between text-[10px] uppercase tracking-wide text-[var(--font-color-faded)] px-1">
-                                    <span>Browse</span>
-                                    <span>Connect</span>
-                                </div>
-
                                 <div className="grid grid-cols-2 gap-3">
                                     <div className="flex flex-col gap-1 text-sm">
                                         {constants.NAVBAR_ITEMS.map(({ icon, key, name, route }) => (
