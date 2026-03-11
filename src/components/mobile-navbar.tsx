@@ -85,6 +85,7 @@ const MobileNavbar = () => {
                                                 icon={icon}
                                                 name={name}
                                                 route={route}
+                                                onClick={() => setIsOpen(false)}
                                             />
                                         ))}
                                     </div>
@@ -96,6 +97,7 @@ const MobileNavbar = () => {
                                                 name={name}
                                                 route={route}
                                                 action={action as ComponentTypes.ConnectItemProps["action"]}
+                                                onClick={() => setIsOpen(false)}
                                             />
                                         ))}
                                     </div>

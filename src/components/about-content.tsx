@@ -17,11 +17,8 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
 const AboutContent = () => {
   return (
     <section className="flex flex-col gap-6 w-full max-w-2xl leading-relaxed">
-      <motion.header
-        className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]"
-        {...fadeInUp}
-      >
-        <h2 className="text-xl font-semibold text-[var(--font-color-faded)]">
+      <motion.header {...fadeInUp} className="mb-4">
+        <h2 className="text-lg font-semibold text-[var(--font-color)]">
           So, who&apos;s this Kunal guy?
         </h2>
         <p className="text-sm text-[var(--font-color-faded)] mt-2">

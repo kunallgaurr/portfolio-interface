@@ -15,16 +15,23 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
 );
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-lg font-semibold text-[var(--font-color)] mt-8 mb-2">
+  <h2 className="text-lg font-semibold text-[var(--font-color)] mt-8 mb-3">
     {children}
   </h2>
 );
 
 const ReadMe = () => {
   return (
-    <div className="min-h-screen lg:px-[10%] px-[10px] lg:py-[5%] py-[10%]">
+    <div className="min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-4 sm:pt-6 lg:pt-[5%] pb-24 lg:pb-[5%]">
       <div className="flex flex-col gap-6 w-full max-w-2xl leading-relaxed">
-        <motion.p {...fadeInUp} className="text-lg">
+        <header className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
+          <h1 className="text-2xl font-semibold text-[var(--font-color)]">Readme</h1>
+          <p className="text-sm text-[var(--font-color-faded)] mt-2">
+            How I work, communicate, and learn.
+          </p>
+        </header>
+
+        <motion.p {...fadeInUp} className="text-[var(--font-color-faded)]">
           Welcome to my little experiment on the internet.
         </motion.p>
 

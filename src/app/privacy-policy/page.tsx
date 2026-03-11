@@ -12,19 +12,26 @@ const fadeInUp = {
 
 const PrivacyPolicy = () => {
     return (
-        <div className="min-h-screen px-[10%] py-[5%]">
-            <div className="flex flex-col gap-5 w-full md:w-[60%]">
+        <div className="min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-4 sm:pt-6 lg:pt-[5%] pb-24 lg:pb-[5%]">
+            <div className="flex flex-col gap-6 w-full max-w-2xl leading-relaxed">
+                <header className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
+                    <h1 className="text-2xl font-semibold text-[var(--font-color)]">Privacy policy</h1>
+                    <p className="text-sm text-[var(--font-color-faded)] mt-2">
+                        How I handle your data.
+                    </p>
+                </header>
+
                 <motion.div
                     className="flex items-center gap-3"
                     {...fadeInUp}
                     transition={{ ...fadeInUp.transition, delay: 0 }}
                 >
                     <ShieldCheck
-                        size={28}
+                        size={24}
                         className="text-[var(--accent-color)] shrink-0"
                         aria-hidden
                     />
-                    <span className="text-[var(--font-color)] text-xl">
+                    <span className="text-[var(--font-color)] font-medium">
                         Your privacy matters to me.
                     </span>
                 </motion.div>

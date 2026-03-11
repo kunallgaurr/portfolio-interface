@@ -1,5 +1,3 @@
-"use client"
-
 "use client";
 
 import { Coffee } from "lucide-react";
@@ -22,7 +20,7 @@ const Error = ({ reset }: ErrorProps) => {
                 transition={{ type: "spring", stiffness: 160, damping: 20 }}
             >
                 <header className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#85858555]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#85858555]">
                         <Coffee
                             size={20}
                             strokeWidth={1.8}
@@ -30,11 +28,11 @@ const Error = ({ reset }: ErrorProps) => {
                             aria-hidden
                         />
                     </div>
-                    <div className="flex flex-col gap-1">
+                    <div className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)] min-w-0">
                         <span className="text-[var(--font-color-faded)] text-xs font-semibold tracking-[0.2em] uppercase">
                             Easy there
                         </span>
-                        <h1 className="text-xl font-semibold">
+                        <h1 className="text-xl font-semibold text-[var(--font-color)] mt-2">
                             Looks like you&apos;re trying too many things at once.
                         </h1>
                     </div>

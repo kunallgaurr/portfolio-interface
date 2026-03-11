@@ -8,7 +8,9 @@ import { ComponentTypes } from "@/types/components.type";
 import ShortcutBadge from "./shortcut-badge";
 
 
-const ConnectItem: React.FC<ComponentTypes.ConnectItemProps> = ({ icon: Icon, name, route, shortcut, action }) => {
+type ConnectItemProps = ComponentTypes.ConnectItemProps & { onClick?: () => void };
+
+const ConnectItem: React.FC<ConnectItemProps> = ({ icon: Icon, name, route, shortcut, action, onClick }) => {
     const router = useRouter();
     const [copied, setCopied] = useState(false);
 
@@ -21,16 +23,19 @@ const ConnectItem: React.FC<ComponentTypes.ConnectItemProps> = ({ icon: Icon, na
     const handleClick = async () => {
         if (action === "copy-email") {
             await handleCopy();
+            onClick?.();
             return;
         }
 
         if (action === "external") {
             window.open(route, "_blank", "noopener,noreferrer");
+            onClick?.();
             return;
         }
 
         if (action === "navigate") {
             router.push(route);
+            onClick?.();
         }
     };
 

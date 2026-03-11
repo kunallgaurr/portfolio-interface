@@ -6,6 +6,7 @@ type NavbarItemProps = {
   name: string;
   route: string;
   shortcut?: string;
+  onClick?: () => void;
 };
 
 const NavbarItem = ({
@@ -13,10 +14,12 @@ const NavbarItem = ({
   name,
   route,
   shortcut,
+  onClick,
 }: NavbarItemProps) => {
   return (
     <Link
       href={route}
+      onClick={onClick}
       className="p-2 flex items-center justify-between rounded-md transition-colors hover:bg-[var(--accent-color-faded)] hover:text-[var(--accent-color)]"
     >
       <div className="flex items-center gap-2">

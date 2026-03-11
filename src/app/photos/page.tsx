@@ -90,11 +90,11 @@ const PhotosPage = () => {
     }, [loading, hasMore]);
 
     return (
-        <div className="min-h-screen lg:px-[10%] lg:py-[5%] py-[10%] px-[10px]">
+        <div className="min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-4 sm:pt-6 lg:pt-[5%] pb-24 lg:pb-[5%]">
             <div className="flex flex-col gap-12 w-full max-w-6xl">
-                <header className="flex flex-col gap-1">
+                <header className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
                     <h1 className="text-2xl font-semibold text-[var(--font-color)]">Photos</h1>
-                    <p className="text-sm text-[var(--font-color-faded)]">
+                    <p className="text-sm text-[var(--font-color-faded)] mt-2">
                         A few moments from the journey.
                     </p>
                 </header>

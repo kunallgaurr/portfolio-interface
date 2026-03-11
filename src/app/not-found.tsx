@@ -8,11 +8,11 @@ const NotFound = () => {
       <section className="relative flex flex-col p-8 bg-[var(--card-background)] rounded-[10px] gap-6 max-w-xl w-full overflow-hidden">
         <div className="pointer-events-none absolute -top-10 -right-10 h-28 w-28 rounded-full bg-[var(--accent-color-faded)] blur-2xl opacity-60 animate-pulse" />
         <header className="flex items-start justify-between gap-4">
-          <div className="flex flex-col gap-1">
+          <div className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
             <span className="text-[var(--font-color-faded)] text-xs font-semibold tracking-[0.2em] uppercase">
               Error 404
             </span>
-            <h1 className="text-2xl font-semibold">
+            <h1 className="text-2xl font-semibold text-[var(--font-color)] mt-2">
               This route never shipped to prod.
             </h1>
           </div>

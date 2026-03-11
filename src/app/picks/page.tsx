@@ -20,23 +20,23 @@ const Picks = () => {
   const [cafeReveal, setCafeReveal] = useState(false);
 
   return (
-    <div className="min-h-screen lg:px-[10%] px-[10px] lg:py-[5%] py-[10%]">
+    <div className="min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-4 sm:pt-6 lg:pt-[5%] pb-24 lg:pb-[5%]">
       <div className="flex flex-col gap-10 w-full max-w-2xl leading-relaxed">
-        <motion.header {...fadeInUp} className="flex flex-col gap-1">
+        <motion.header {...fadeInUp} className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
           <h1
-            className="text-2xl  text-[var(--font-color)] cursor-default select-none"
+            className="text-2xl font-semibold text-[var(--font-color)] cursor-default select-none"
             onClick={() => setPivotCount((c) => c + 1)}
           >
             Picks & preferences
           </h1>
-          <p className="text-sm text-[var(--font-color-faded)]">
+          <p className="text-sm text-[var(--font-color-faded)] mt-2">
             Things I enjoy when I&apos;m not staring at a terminal.
           </p>
           {pivotCount >= 3 && (
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-[var(--accent-color)]  text-lg mt-2"
+              className="text-[var(--accent-color)] text-lg mt-2"
             >
               PIVOT! PIVOT! PIVOT!
             </motion.span>
@@ -44,7 +44,7 @@ const Picks = () => {
         </motion.header>
 
         <motion.section {...fadeInUp}>
-          <h2 className="text-lg  text-[var(--font-color)] mb-3">
+          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
             On the screen
           </h2>
           <p className="text-[var(--font-color-faded)]">
@@ -91,7 +91,7 @@ const Picks = () => {
         </motion.section>
 
         <motion.section {...fadeInUp}>
-          <h2 className="text-lg  text-[var(--font-color)] mb-3">
+          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
             In the stands
           </h2>
           <p className="text-[var(--font-color-faded)]">
@@ -119,7 +119,7 @@ const Picks = () => {
         </motion.section>
 
         <motion.section {...fadeInUp}>
-          <h2 className="text-lg  text-[var(--font-color)] mb-3">
+          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
             On the plate
           </h2>
           <p className="text-[var(--font-color-faded)]">
@@ -146,7 +146,7 @@ const Picks = () => {
         </motion.section>
 
         <motion.section {...fadeInUp}>
-          <h2 className="text-lg  text-[var(--font-color)] mb-3">
+          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
             Live & loud
           </h2>
           <p className="text-[var(--font-color-faded)]">
@@ -157,7 +157,7 @@ const Picks = () => {
         </motion.section>
 
         <motion.section {...fadeInUp}>
-          <h2 className="text-lg  text-[var(--font-color)] mb-3">
+          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
             Caffeine & peaks
           </h2>
           <p className="text-[var(--font-color-faded)]">
@@ -203,7 +203,7 @@ const Picks = () => {
         </motion.section>
 
         <motion.section {...fadeInUp}>
-          <h2 className="text-lg  text-[var(--font-color)] mb-3">
+          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
             Suggestions
           </h2>
           <ul className="list-disc pl-5 text-[var(--font-color-faded)] space-y-2">
