@@ -14,13 +14,6 @@ const PrivacyPolicy = () => {
     return (
         <div className="min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-4 sm:pt-6 lg:pt-[5%] pb-24 lg:pb-[5%]">
             <div className="flex flex-col gap-6 w-full max-w-2xl leading-relaxed">
-                <header className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
-                    <h1 className="text-2xl font-semibold text-[var(--font-color)]">Privacy policy</h1>
-                    <p className="text-sm text-[var(--font-color-faded)] mt-2">
-                        How I handle your data.
-                    </p>
-                </header>
-
                 <motion.div
                     className="flex items-center gap-3"
                     {...fadeInUp}
