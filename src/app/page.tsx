@@ -19,12 +19,10 @@ function getTimeGreeting() {
     return "Good evening,";
 }
 
-const introRest =
-    " I'm Kunal, I hit random keys, summon microservices, and call it architecture. Somehow it compiles, scales, and survives production. Occasionally, I even pretend it was planned.";
-
 const Home = () => {
     const greeting = useMemo(getTimeGreeting, []);
-    const intro = greeting + introRest;
+    const intro = "I'm Kunal, I hit random keys, summon microservices, and call it architecture. Somehow it compiles, scales, and survives production. Occasionally, I even pretend it was planned.";
+    
     const tokens = useMemo(() => intro.split(/(\s+)/), [intro]);
     const wordCount = intro.split(/\s+/).filter(Boolean).length;
     const textRevealDuration = 0.08 + (wordCount - 1) * 0.02;
