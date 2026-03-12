@@ -2,7 +2,9 @@
 
 import httpAdapter from "@/adapters/http/http.adapter";
 import { ComponentTypes } from "@/types/components.type";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { Camera } from "lucide-react";
 
 const PAGE_SIZE = 9;
 
@@ -10,6 +12,13 @@ const PAGE_SIZE = 9;
 const getBentoSize = (i: number) => {
     const pattern = ["md", "sm", "sm", "lg", "sm", "md", "sm", "sm", "lg"] as const;
     return pattern[i % pattern.length];
+};
+
+const fadeInUp = {
+    initial: { opacity: 0, y: 16 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.2 },
+    transition: { type: "spring" as const, stiffness: 120, damping: 22 },
 };
 
 const PhotoTile = ({
@@ -26,7 +35,7 @@ const PhotoTile = ({
     };
 
     return (
-        <div className={`${sizeClasses[size]} min-h-[200px]`}> 
+        <div className={`${sizeClasses[size]} min-h-[200px]`}>
             <article className="h-full flex flex-col rounded-2xl overflow-hidden bg-[var(--card-background)] border border-white/5 hover:border-white/10 transition-colors group">
                 <div className="relative flex-1 min-h-[180px] overflow-hidden">
                     <img
@@ -91,26 +100,32 @@ const PhotosPage = () => {
 
     return (
         <div className="min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-4 sm:pt-6 lg:pt-[5%] pb-24 lg:pb-[5%]">
-            <div className="flex flex-col gap-12 w-full max-w-6xl">
-                <header className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
-                    <h1 className="text-2xl font-semibold text-[var(--font-color)]">Photos</h1>
-                    <p className="text-sm text-[var(--font-color-faded)] mt-2">
-                        A few moments from the journey.
-                    </p>
-                </header>
+            <div className="flex flex-col gap-12 w-full max-w-4xl mx-auto">
+                <motion.header {...fadeInUp} className="mb-4 flex items-start gap-3">
+                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-color-faded)]/40 text-[var(--accent-color)]">
+                        <Camera size={18} aria-hidden />
+                    </div>
+                    <div>
+                        <h2 className="text-lg font-semibold text-[var(--font-color)]">
+                            A few moments from the journey.
+                        </h2>
+                        <p className="text-sm text-[var(--font-color-faded)] mt-2">
+                            I like to capture moments that I find interesting. Here are a few of them.
+                        </p>
+                    </div>
+                </motion.header>
 
                 {images.length === 0 && loading ? (
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:gap-4 gap-[10px] auto-rows-[200px] grid-flow-dense">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px] grid-flow-dense">
                         {Array.from({ length: PAGE_SIZE }).map((_, i) => (
                             <div
                                 key={i}
-                                className={`rounded-2xl bg-[#85858555] animate-pulse ${
-                                    getBentoSize(i) === "md"
-                                        ? "col-span-2"
-                                        : getBentoSize(i) === "lg"
-                                          ? "row-span-2"
-                                          : ""
-                                }`}
+                                className={`rounded-2xl bg-[#85858555] animate-pulse ${getBentoSize(i) === "md"
+                                    ? "col-span-2"
+                                    : getBentoSize(i) === "lg"
+                                        ? "row-span-2"
+                                        : ""
+                                    }`}
                             />
                         ))}
                     </div>
@@ -118,7 +133,7 @@ const PhotosPage = () => {
                     <p className="text-[var(--font-color-faded)]">No photos yet.</p>
                 ) : (
                     <>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:gap-4 gap-[10px] auto-rows-[200px] grid-flow-dense">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px] grid-flow-dense">
                             {images.map((image, i) => (
                                 <PhotoTile
                                     key={image.id}

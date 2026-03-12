@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { User } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 16 },
@@ -17,13 +18,18 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
 const AboutContent = () => {
   return (
     <section className="flex flex-col gap-6 w-full max-w-2xl leading-relaxed">
-      <motion.header {...fadeInUp} className="mb-4">
-        <h2 className="text-lg font-semibold text-[var(--font-color)]">
-          So, who&apos;s this Kunal guy?
-        </h2>
-        <p className="text-sm text-[var(--font-color-faded)] mt-2">
-          Fun fact: He once opened a terminal &quot;just to try something&quot; and never really closed it.
-        </p>
+      <motion.header {...fadeInUp} className="mb-4 flex items-start gap-3">
+        <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-color-faded)]/40 text-[var(--accent-color)]">
+          <User size={18} aria-hidden />
+        </div>
+        <div>
+          <h2 className="text-lg font-semibold text-[var(--font-color)]">
+            So, who&apos;s this Kunal guy?
+          </h2>
+          <p className="text-sm text-[var(--font-color-faded)] mt-2">
+            Fun fact: He once opened a terminal &quot;just to try something&quot; and never really closed it.
+          </p>
+        </div>
       </motion.header>
 
       <motion.p {...fadeInUp}>
@@ -33,6 +39,12 @@ const AboutContent = () => {
       <motion.p {...fadeInUp}>
         This is my <Highlight>digital workshop</Highlight>, part lab, part notebook, part slightly organized chaos.
       </motion.p>
+
+      <motion.div {...fadeInUp} className="rounded-xl border border-white/10 bg-[var(--card-background)]/60 px-4 py-3">
+        <p className="text-sm font-medium text-[var(--font-color)] italic">
+          &ldquo;Learn in public. Experiment. Ship. Break things safely.&rdquo;
+        </p>
+      </motion.div>
 
       <motion.p {...fadeInUp}>
         I built this space primarily to <Highlight>learn in public</Highlight>. To experiment. To ship. To break things safely.

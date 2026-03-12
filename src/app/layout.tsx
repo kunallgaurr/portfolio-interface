@@ -8,6 +8,7 @@ import MobileNavbar from "@/components/mobile-navbar";
 import Footer from "@/components/footer";
 import { Metadata } from "next";
 import ConnectLinks from "@/components/connect-links";
+import { ToastProvider } from "@/contexts/toast-context";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kunalgaur.in";
 
@@ -90,6 +91,7 @@ const RootLayout: React.FC<GlobalTypes.BaseLayout> = ({ children }) => {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
+                <ToastProvider>
                 <NavbarLayout>
                     <Navbar />
                     <ConnectLinks />
@@ -99,6 +101,7 @@ const RootLayout: React.FC<GlobalTypes.BaseLayout> = ({ children }) => {
                     {children}
                     <Footer />
                 </div>
+                </ToastProvider>
             </body>
         </html>
     );

@@ -88,6 +88,19 @@ export namespace HttpTypes {
         points: ExperiencePoint[]
     }
 
+    export interface GetExperienceDetail {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        role: string,
+        companyName: string,
+        description: string,
+        startDate: string,
+        endDate: string,
+        isCurrent: boolean,
+        points: ExperiencePoint[]
+    }
+
     export interface SendMessageParams {
         name: string;
         email: string;

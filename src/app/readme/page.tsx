@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Briefcase, MessageCircle, BookOpen, Heart, ChevronDown, Book } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 16 },
@@ -14,22 +15,88 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
   <span className="text-[var(--accent-color)]">{children}</span>
 );
 
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-lg font-semibold text-[var(--font-color)] mt-8 mb-3">
-    {children}
-  </h2>
-);
+const sectionIcons = {
+  work: Briefcase,
+  communicate: MessageCircle,
+  learn: BookOpen,
+  value: Heart,
+} as const;
+
+const SectionBlock = ({
+  title,
+  icon: Icon,
+  children,
+  defaultOpen = false,
+}: {
+  title: string;
+  icon: React.ElementType;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+}) => {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <motion.div
+      {...fadeInUp}
+      className="rounded-xl border border-white/10 bg-[var(--card-background)]/40 overflow-hidden"
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-center justify-between gap-3 px-4 py-3 text-left hover:bg-white/[0.03] transition-colors"
+        aria-expanded={open}
+      >
+        <span className="flex items-center gap-3">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-color-faded)]/40 text-[var(--accent-color)]">
+            <Icon size={16} aria-hidden />
+          </span>
+          <h2 className="text-lg font-semibold text-[var(--font-color)]">
+            {title}
+          </h2>
+        </span>
+        <motion.span
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="text-[var(--font-color-faded)]"
+        >
+          <ChevronDown size={18} aria-hidden />
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 pb-4 pt-1 border-t border-white/5">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
 
 const ReadMe = () => {
   return (
     <div className="min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-4 sm:pt-6 lg:pt-[5%] pb-24 lg:pb-[5%]">
       <div className="flex flex-col gap-6 w-full max-w-2xl leading-relaxed">
-        <header className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
-          <h1 className="text-2xl font-semibold text-[var(--font-color)]">Readme</h1>
-          <p className="text-sm text-[var(--font-color-faded)] mt-2">
+      <motion.header {...fadeInUp} className="mb-4 flex items-start gap-3">
+        <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-color-faded)]/40 text-[var(--accent-color)]">
+          <Book size={18} aria-hidden />
+        </div>
+        <div>
+          <h2 className="text-lg font-semibold text-[var(--font-color)]">
             How I work, communicate, and learn.
+          </h2>
+          <p className="text-sm text-[var(--font-color-faded)] mt-2">
+            A brief overview of how I like to work, communicate, and learn.
           </p>
-        </header>
+        </div>
+      </motion.header>
 
         <motion.p {...fadeInUp} className="text-[var(--font-color-faded)]">
           Welcome to my little experiment on the internet.
@@ -45,82 +112,80 @@ const ReadMe = () => {
           If something breaks, that&apos;s part of the research.
         </motion.p>
 
-        <motion.div {...fadeInUp}>
-          <SectionTitle>How I like to work</SectionTitle>
-          <ul className="flex flex-col gap-3 list-disc pl-5 text-[var(--font-color-faded)]">
-            <li>
-              <strong className="text-[var(--font-color)]">Move fast, but build it right.</strong>{" "}
-              I believe in getting things done efficiently, without cutting corners. If it&apos;s
-              worth building, it&apos;s worth building well.
-            </li>
-            <li>
-              <strong className="text-[var(--font-color)]">Work with intention.</strong> I like
-              understanding the why behind decisions, trade-offs, constraints, and long-term impact,
-              before committing to a direction.
-            </li>
-            <li>
-              <strong className="text-[var(--font-color)]">Own the outcome.</strong> I care about
-              how things behave in production, not just how they look in development. Ship, refine,
-              improve, repeat.
-            </li>
-          </ul>
-        </motion.div>
+        <div className="flex flex-col gap-3 mt-2">
+          <SectionBlock title="How I like to work" icon={sectionIcons.work} defaultOpen>
+            <ul className="flex flex-col gap-3 list-disc pl-5 text-[var(--font-color-faded)] text-sm">
+              <li>
+                <strong className="text-[var(--font-color)]">Move fast, but build it right.</strong>{" "}
+                I believe in getting things done efficiently, without cutting corners. If it&apos;s
+                worth building, it&apos;s worth building well.
+              </li>
+              <li>
+                <strong className="text-[var(--font-color)]">Work with intention.</strong> I like
+                understanding the why behind decisions, trade-offs, constraints, and long-term impact,
+                before committing to a direction.
+              </li>
+              <li>
+                <strong className="text-[var(--font-color)]">Own the outcome.</strong> I care about
+                how things behave in production, not just how they look in development. Ship, refine,
+                improve, repeat.
+              </li>
+            </ul>
+          </SectionBlock>
 
-        <motion.div {...fadeInUp}>
-          <SectionTitle>How I communicate</SectionTitle>
-          <ul className="flex flex-col gap-3 list-disc pl-5 text-[var(--font-color-faded)]">
-            <li>
-              <strong className="text-[var(--font-color)]">Clarity over everything.</strong> I prefer
-              precise requirements, defined goals, and clear next steps. Ambiguity slows momentum.
-            </li>
-            <li>
-              <strong className="text-[var(--font-color)]">Direct and honest.</strong> If something
-              is unclear, I&apos;ll say so. If I&apos;m confused, I ask questions early rather than assume.
-            </li>
-            <li>
-              <strong className="text-[var(--font-color)]">Decisive collaboration.</strong> I value
-              thoughtful discussion, but once a direction is chosen, I prefer committing and moving
-              forward.
-            </li>
-          </ul>
-        </motion.div>
+          <SectionBlock title="How I communicate" icon={sectionIcons.communicate}>
+            <ul className="flex flex-col gap-3 list-disc pl-5 text-[var(--font-color-faded)] text-sm">
+              <li>
+                <strong className="text-[var(--font-color)]">Clarity over everything.</strong> I prefer
+                precise requirements, defined goals, and clear next steps. Ambiguity slows momentum.
+              </li>
+              <li>
+                <strong className="text-[var(--font-color)]">Direct and honest.</strong> If something
+                is unclear, I&apos;ll say so. If I&apos;m confused, I ask questions early rather than assume.
+              </li>
+              <li>
+                <strong className="text-[var(--font-color)]">Decisive collaboration.</strong> I value
+                thoughtful discussion, but once a direction is chosen, I prefer committing and moving
+                forward.
+              </li>
+            </ul>
+          </SectionBlock>
 
-        <motion.div {...fadeInUp}>
-          <SectionTitle>How I learn</SectionTitle>
-          <ul className="flex flex-col gap-3 list-disc pl-5 text-[var(--font-color-faded)]">
-            <li>
-              <strong className="text-[var(--font-color)]">Learn by doing.</strong> I read docs, but
-              I learn by shipping. Breaking things in a sandbox beats theory every time.
-            </li>
-            <li>
-              <strong className="text-[var(--font-color)]">Share what I find.</strong> If I solve a
-              tricky problem, I document it. Someone else will hit the same wall.
-            </li>
-            <li>
-              <strong className="text-[var(--font-color)]">Stay curious.</strong> The best ideas often
-              come from outside my usual stack. I keep an eye on what&apos;s new without chasing every
-              trend.
-            </li>
-          </ul>
-        </motion.div>
+          <SectionBlock title="How I learn" icon={sectionIcons.learn}>
+            <ul className="flex flex-col gap-3 list-disc pl-5 text-[var(--font-color-faded)] text-sm">
+              <li>
+                <strong className="text-[var(--font-color)]">Learn by doing.</strong> I read docs, but
+                I learn by shipping. Breaking things in a sandbox beats theory every time.
+              </li>
+              <li>
+                <strong className="text-[var(--font-color)]">Share what I find.</strong> If I solve a
+                tricky problem, I document it. Someone else will hit the same wall.
+              </li>
+              <li>
+                <strong className="text-[var(--font-color)]">Stay curious.</strong> The best ideas often
+                come from outside my usual stack. I keep an eye on what&apos;s new without chasing every
+                trend.
+              </li>
+            </ul>
+          </SectionBlock>
 
-        <motion.div {...fadeInUp}>
-          <SectionTitle>What I value</SectionTitle>
-          <ul className="flex flex-col gap-3 list-disc pl-5 text-[var(--font-color-faded)]">
-            <li>
-              <strong className="text-[var(--font-color)]">Simplicity.</strong> The best systems are
-              easy to reason about. I&apos;d rather have a few well-chosen tools than a kitchen sink.
-            </li>
-            <li>
-              <strong className="text-[var(--font-color)]">Reliability.</strong> Uptime, error handling,
-              and graceful degradation matter. Users shouldn&apos;t see our mistakes.
-            </li>
-            <li>
-              <strong className="text-[var(--font-color)]">Iteration.</strong> Perfect is the enemy of
-              shipped. I prefer to get something working, then refine.
-            </li>
-          </ul>
-        </motion.div>
+          <SectionBlock title="What I value" icon={sectionIcons.value}>
+            <ul className="flex flex-col gap-3 list-disc pl-5 text-[var(--font-color-faded)] text-sm">
+              <li>
+                <strong className="text-[var(--font-color)]">Simplicity.</strong> The best systems are
+                easy to reason about. I&apos;d rather have a few well-chosen tools than a kitchen sink.
+              </li>
+              <li>
+                <strong className="text-[var(--font-color)]">Reliability.</strong> Uptime, error handling,
+                and graceful degradation matter. Users shouldn&apos;t see our mistakes.
+              </li>
+              <li>
+                <strong className="text-[var(--font-color)]">Iteration.</strong> Perfect is the enemy of
+                shipped. I prefer to get something working, then refine.
+              </li>
+            </ul>
+          </SectionBlock>
+        </div>
 
         <motion.p {...fadeInUp} className="text-[var(--font-color-faded)] mt-4">
           If any of this resonates, or you want to build something together —{" "}

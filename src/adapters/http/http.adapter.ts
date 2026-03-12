@@ -126,6 +126,19 @@ class HttpAdapter {
         }
     }
 
+    async getExperienceDetail (id: string): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetExperienceDetail>> {
+        const params: HttpTypes.RequestParams = {
+            url: `/experience/${id}`,
+            method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async sendMesssage (payload: HttpTypes.SendMessageParams): Promise<GlobalTypes.BaseApiResponse<boolean>> {
         const params: HttpTypes.RequestParams = {
             url: '/contact',

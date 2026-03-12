@@ -3,11 +3,8 @@
 import Status from "@/components/status";
 import TimeCard from "@/components/timecard";
 import Image from "next/image";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-
-const intro =
-    "Hi I am Kunal, I hit random keys, summon microservices, and call it architecture. Somehow it compiles, scales, and survives production. Occasionally, I even pretend it was planned.";
+import React, { useState, useMemo, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const highlightedWords = new Set(["microservices", "architecture", "production"]);
 
@@ -15,13 +12,31 @@ function normalizeWord(chunk: string) {
     return chunk.replace(/[^\p{L}\p{N}_]+/gu, "").toLowerCase();
 }
 
-const wordCount = intro.split(/\s+/).filter(Boolean).length;
-const textRevealDuration = 0.08 + (wordCount - 1) * 0.02;
+function getTimeGreeting() {
+    const h = new Date().getHours();
+    if (h < 12) return "Good morning,";
+    if (h < 17) return "Good afternoon,";
+    return "Good evening,";
+}
+
+const introRest =
+    " I'm Kunal, I hit random keys, summon microservices, and call it architecture. Somehow it compiles, scales, and survives production. Occasionally, I even pretend it was planned.";
 
 const Home = () => {
-    const tokens = React.useMemo(() => intro.split(/(\s+)/), []);
+    const greeting = useMemo(getTimeGreeting, []);
+    const intro = greeting + introRest;
+    const tokens = useMemo(() => intro.split(/(\s+)/), [intro]);
+    const wordCount = intro.split(/\s+/).filter(Boolean).length;
+    const textRevealDuration = 0.08 + (wordCount - 1) * 0.02;
+
     const [rotation, setRotation] = useState(0);
     const [isFlipping, setIsFlipping] = useState(false);
+    const [showCursor, setShowCursor] = useState(true);
+
+    useEffect(() => {
+        const t = setTimeout(() => setShowCursor(false), 4200);
+        return () => clearTimeout(t);
+    }, []);
 
     const handleFlip = () => {
         if (isFlipping) return;
@@ -92,6 +107,19 @@ const Home = () => {
                                     </motion.span>
                                 );
                             })}
+                            <AnimatePresence>
+                                {showCursor && (
+                                    <motion.span
+                                        key="cursor"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="inline-block w-[2px] h-[0.9em] ml-0.5 align-middle bg-[var(--accent-color)] rounded-sm animate-[cursor-blink_1s_step-end_infinite]"
+                                        aria-hidden
+                                    />
+                                )}
+                            </AnimatePresence>
                         </motion.span>
                     </div>
                 </div>

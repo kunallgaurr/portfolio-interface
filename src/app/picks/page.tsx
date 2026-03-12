@@ -1,7 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Tv, Trophy, UtensilsCrossed, Music, Coffee, Lightbulb, Verified } from "lucide-react";
+import { useToast } from "@/contexts/toast-context";
+import {
+  markEasterEggFound,
+  getRemainingEasterEggCount,
+} from "@/utils/easter-eggs";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 16 },
@@ -10,7 +16,16 @@ const fadeInUp = {
   transition: { type: "spring" as const, stiffness: 120, damping: 22 },
 };
 
+const SectionIcon = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-color-faded)]/40 text-[var(--accent-color)]">
+    <Icon size={16} aria-hidden />
+  </span>
+);
+
+const EASTER_EGG_ID_PICKS = "picks-pivot";
+
 const Picks = () => {
+  const toast = useToast();
   const [pivotCount, setPivotCount] = useState(0);
   const [officeReveal, setOfficeReveal] = useState(false);
   const [mountainReveal, setMountainReveal] = useState(false);
@@ -19,34 +34,53 @@ const Picks = () => {
   const [biryaniReveal, setBiryaniReveal] = useState(false);
   const [cafeReveal, setCafeReveal] = useState(false);
 
+  useEffect(() => {
+    if (pivotCount < 3) return;
+    const newlyFound = markEasterEggFound(EASTER_EGG_ID_PICKS);
+    if (!newlyFound) return;
+    const remaining = getRemainingEasterEggCount();
+    const message =
+      remaining === 0
+        ? "You found an easter egg! You found them all!"
+        : `You found an easter egg! ${remaining} remaining.`;
+    toast.showToast(message);
+  }, [pivotCount, toast]);
+
   return (
     <div className="min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-4 sm:pt-6 lg:pt-[5%] pb-24 lg:pb-[5%]">
       <div className="flex flex-col gap-10 w-full max-w-2xl leading-relaxed">
-        <motion.header {...fadeInUp} className="mb-4 pl-4 border-l-2 border-[var(--accent-color-faded)]">
-          <h1
-            className="text-2xl font-semibold text-[var(--font-color)] cursor-default select-none"
-            onClick={() => setPivotCount((c) => c + 1)}
-          >
-            Picks & preferences
-          </h1>
-          <p className="text-sm text-[var(--font-color-faded)] mt-2">
-            Things I enjoy when I&apos;m not staring at a terminal.
-          </p>
-          {pivotCount >= 3 && (
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-[var(--accent-color)] text-lg mt-2"
+        <motion.header {...fadeInUp} className="mb-4 flex items-start gap-3">
+          <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-color-faded)]/40 text-[var(--accent-color)]">
+            <Verified size={18} aria-hidden />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold text-[var(--font-color)] cursor-pointer" 
+              onClick={() => setPivotCount((c) => c + 1)}
             >
-              PIVOT! PIVOT! PIVOT!
-            </motion.span>
-          )}
+              Picks & preferences
+            </h2>
+            <p className="text-sm text-[var(--font-color-faded)] mt-2">
+              Things I enjoy when I&apos;m not staring at a terminal.
+            </p>
+            {pivotCount >= 3 && (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="block mt-2 text-[var(--accent-color)] text-sm"
+              >
+                PIVOT! PIVOT! PIVOT!
+              </motion.span>
+            )}
+          </div>
         </motion.header>
 
-        <motion.section {...fadeInUp}>
-          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
-            On the screen
-          </h2>
+        <motion.section {...fadeInUp} className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <SectionIcon icon={Tv} />
+            <h2 className="text-lg font-semibold text-[var(--font-color)]">
+              On the screen
+            </h2>
+          </div>
           <p className="text-[var(--font-color-faded)]">
             I rewatch <span className="text-[var(--font-color)]">Friends</span> more than I&apos;d
             care to admit; yes, even the one with the couch. <span className="text-[var(--font-color)]">The Office</span> is my
@@ -90,10 +124,13 @@ const Picks = () => {
           </p>
         </motion.section>
 
-        <motion.section {...fadeInUp}>
-          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
-            In the stands
-          </h2>
+        <motion.section {...fadeInUp} className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <SectionIcon icon={Trophy} />
+            <h2 className="text-lg font-semibold text-[var(--font-color)]">
+              In the stands
+            </h2>
+          </div>
           <p className="text-[var(--font-color-faded)]">
             Big <span className="text-[var(--font-color)]">football</span> fan. Match days are
             non-negotiable. I&apos;ll argue about tactics, curse at the screen, and celebrate like
@@ -118,10 +155,13 @@ const Picks = () => {
           </p>
         </motion.section>
 
-        <motion.section {...fadeInUp}>
-          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
-            On the plate
-          </h2>
+        <motion.section {...fadeInUp} className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <SectionIcon icon={UtensilsCrossed} />
+            <h2 className="text-lg font-semibold text-[var(--font-color)]">
+              On the plate
+            </h2>
+          </div>
           <p className="text-[var(--font-color-faded)]">
             <span className="text-[var(--font-color)]">Mughlai cuisine</span>: biryani, kebabs,
             butter chicken,{" "}
@@ -145,10 +185,13 @@ const Picks = () => {
           </p>
         </motion.section>
 
-        <motion.section {...fadeInUp}>
-          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
-            Live & loud
-          </h2>
+        <motion.section {...fadeInUp} className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <SectionIcon icon={Music} />
+            <h2 className="text-lg font-semibold text-[var(--font-color)]">
+              Live & loud
+            </h2>
+          </div>
           <p className="text-[var(--font-color-faded)]">
             I love attending <span className="text-[var(--font-color)]">live standup shows</span>.
             There&apos;s something about a room full of strangers laughing together. If you know a
@@ -156,10 +199,13 @@ const Picks = () => {
           </p>
         </motion.section>
 
-        <motion.section {...fadeInUp}>
-          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
-            Caffeine & peaks
-          </h2>
+        <motion.section {...fadeInUp} className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <SectionIcon icon={Coffee} />
+            <h2 className="text-lg font-semibold text-[var(--font-color)]">
+              Caffeine & peaks
+            </h2>
+          </div>
           <p className="text-[var(--font-color-faded)]">
             I enjoy <span className="text-[var(--font-color)]">exploring cafes</span>, the quiet
             ones with good wifi and better coffee. New city? First thing I look up is the{" "}
@@ -202,10 +248,13 @@ const Picks = () => {
           </p>
         </motion.section>
 
-        <motion.section {...fadeInUp}>
-          <h2 className="text-lg font-semibold text-[var(--font-color)] mb-3">
-            Suggestions
-          </h2>
+        <motion.section {...fadeInUp} className="flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <SectionIcon icon={Lightbulb} />
+            <h2 className="text-lg font-semibold text-[var(--font-color)]">
+              Suggestions
+            </h2>
+          </div>
           <ul className="list-disc pl-5 text-[var(--font-color-faded)] space-y-2">
             <li>Watch a race weekend if you haven&apos;t, start with Monaco or Monza.</li>
             <li>Try a proper biryani from a place that takes hours to make it.</li>
