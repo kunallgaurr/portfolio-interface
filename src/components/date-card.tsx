@@ -47,21 +47,19 @@ const DateCard = () => {
 
     if (isLoading) {
         return (
-            <section className={sectionClassName}>
+            <section className={sectionClassName} aria-busy="true" aria-label="Loading date">
                 <header>
-                    <div className="h-5 w-20 rounded bg-[#85858555] animate-pulse" />
+                    <div className="skeleton h-5 w-20 rounded" />
                 </header>
-
                 <div className="flex flex-col gap-2">
-                    <div className="h-14 w-16 rounded bg-[#85858555] animate-pulse" />
-                    <div className="h-4 w-24 rounded bg-[#85858555] animate-pulse" />
+                    <div className="skeleton h-14 w-16 rounded" />
+                    <div className="skeleton h-4 w-24 rounded" />
                 </div>
-
                 <div className="flex flex-col gap-3">
                     <div className="h-10 bg-[#373535] rounded-[5px] p-2 overflow-hidden">
-                        <div className="h-full w-1/3 rounded-[3px] bg-[#85858555] animate-pulse" />
+                        <div className="skeleton h-full w-1/3 rounded-[3px]" />
                     </div>
-                    <div className="h-4 w-36 rounded bg-[#85858555] animate-pulse" />
+                    <div className="skeleton h-4 w-36 rounded" />
                 </div>
             </section>
         );

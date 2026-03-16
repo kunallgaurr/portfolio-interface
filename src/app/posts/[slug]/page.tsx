@@ -110,21 +110,23 @@ const PostDetailPage = () => {
 
     if (loading) {
         return (
-            <div className="relative min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-6 sm:pt-8 lg:pt-[6%] pb-24 overflow-hidden">
+            <div className="relative min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-6 sm:pt-8 lg:pt-[6%] pb-24 overflow-hidden" aria-busy="true">
                 <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full opacity-[0.04] blur-[80px] bg-[var(--accent-color)] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
                 <div className="relative max-w-3xl mx-auto flex flex-col gap-8">
-                    <div className="h-5 w-24 rounded bg-[#85858555] animate-pulse" />
+                    <div className="skeleton h-5 w-24 rounded" />
                     <div className="rounded-2xl overflow-hidden bg-[var(--card-background)]/30 border border-white/10">
-                        <div className="aspect-[2.4/1] sm:aspect-[3/1] bg-[#85858555] animate-pulse" />
+                        <div className="relative w-full aspect-[2.4/1] sm:aspect-[3/1] overflow-hidden">
+                            <div className="skeleton absolute inset-0" />
+                        </div>
                         <div className="p-6 sm:p-8 space-y-4">
-                            <div className="h-4 w-32 rounded bg-[#85858555] animate-pulse" />
-                            <div className="h-10 w-full max-w-xl rounded-lg bg-[#85858555] animate-pulse" />
-                            <div className="h-5 w-48 rounded bg-[#85858555] animate-pulse" />
+                            <div className="skeleton h-4 w-32 rounded" />
+                            <div className="skeleton h-10 w-full max-w-xl rounded-lg" />
+                            <div className="skeleton h-5 w-48 rounded" />
                         </div>
                     </div>
                     <div className="space-y-4">
                         {[1, 2, 3, 4, 5].map((i) => (
-                            <div key={i} className="h-4 w-full rounded bg-[#85858555] animate-pulse" style={{ width: i === 4 ? "75%" : "100%" }} />
+                            <div key={i} className="skeleton h-4 rounded" style={{ width: i === 4 ? "75%" : "100%" }} />
                         ))}
                     </div>
                 </div>

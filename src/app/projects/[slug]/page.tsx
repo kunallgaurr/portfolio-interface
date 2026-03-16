@@ -177,26 +177,90 @@ const ProjectDetailPage = () => {
 
     if (loading) {
         return (
-            <div className="relative min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[5%] pt-6 sm:pt-8 lg:pt-[6%] pb-24 overflow-hidden">
+            <div className="relative min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[5%] pt-6 sm:pt-8 lg:pt-[6%] pb-24 overflow-hidden" aria-busy="true">
                 <div className="absolute top-0 right-0 w-[380px] h-[380px] rounded-full opacity-[0.04] blur-[80px] bg-[var(--accent-color)] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                <div className="relative max-w-3xl mx-auto flex flex-col gap-8">
-                    <div className="h-5 w-20 rounded bg-[#85858555] animate-pulse" />
-                    <div className="rounded-2xl border border-white/10 bg-[var(--card-background)]/30 p-6 space-y-4">
-                        <div className="h-8 w-48 rounded-lg bg-[#85858555] animate-pulse" />
-                        <div className="h-4 w-full max-w-md rounded bg-[#85858555] animate-pulse" />
-                        <div className="flex flex-wrap gap-3">
-                            <div className="h-6 w-16 rounded bg-[#85858555] animate-pulse" />
-                            <div className="h-6 w-12 rounded bg-[#85858555] animate-pulse" />
+                <div className="relative w-full max-w-5xl mx-auto flex flex-col gap-6 sm:gap-8">
+                    {/* Back link — matches order-1 */}
+                    <div className="skeleton h-5 w-20 rounded order-1" />
+                    {/* Two columns — grid so they sit side-by-side on lg */}
+                    <div className="grid w-full grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[1fr_minmax(260px,320px)] lg:gap-x-6 lg:items-start">
+                        {/* Left: README card + back link — row 1 on mobile, col 1 on lg */}
+                        <div className="flex flex-col gap-6 min-w-0 order-2 lg:order-none lg:col-start-1 lg:row-start-1">
+                            <div className="rounded-2xl border border-white/10 bg-[var(--card-background)]/20 p-6 sm:p-8 min-w-0">
+                                <div className="skeleton h-4 w-20 rounded mb-4" />
+                                <div className="space-y-3">
+                                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                                        <div key={i} className="skeleton h-4 rounded" style={{ width: i === 6 ? "60%" : "100%" }} />
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="skeleton h-5 w-28 rounded" />
                         </div>
-                    </div>
-                    <div className="space-y-3">
-                        {[1, 2, 3, 4].map((i) => (
-                            <div
-                                key={i}
-                                className="h-4 w-full rounded bg-[#85858555] animate-pulse"
-                                style={{ width: i === 4 ? "70%" : "100%" }}
-                            />
-                        ))}
+                        {/* Right: project card — row 1 on mobile, col 2 on lg */}
+                        <div className="rounded-2xl border border-white/10 bg-[var(--card-background)]/30 p-5 sm:p-6 order-1 lg:order-none lg:col-start-2 lg:row-start-1 lg:sticky lg:top-6 lg:border-l-[var(--accent-color)]/20 lg:border-l-2">
+                            <div className="flex flex-col gap-4">
+                                <div className="min-w-0">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        <div className="skeleton h-7 w-40 rounded" />
+                                        <div className="skeleton h-5 w-12 rounded" />
+                                        <div className="skeleton h-8 w-8 rounded-lg" />
+                                    </div>
+                                    <div className="skeleton h-4 w-full max-w-md rounded mt-2" />
+                                </div>
+                                <div className="skeleton h-10 w-full rounded-lg" />
+                                {/* Clone: label + two stacked rows (not side-by-side) */}
+                                <div className="space-y-2">
+                                    <div className="skeleton h-3 w-12 rounded" />
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                                            <div className="skeleton h-3 flex-1 rounded" />
+                                            <div className="skeleton h-5 w-5 rounded shrink-0" />
+                                        </div>
+                                        <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                                            <div className="skeleton h-3 flex-1 rounded" />
+                                            <div className="skeleton h-5 w-5 rounded shrink-0" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* Topics — mt-5 space-y-2 like real */}
+                            <div className="mt-5 space-y-2">
+                                <div className="skeleton h-3 w-14 rounded" />
+                                <div className="flex flex-wrap gap-2">
+                                    <div className="skeleton h-6 w-16 rounded-full" />
+                                    <div className="skeleton h-6 w-20 rounded-full" />
+                                    <div className="skeleton h-6 w-14 rounded-full" />
+                                </div>
+                            </div>
+                            {/* Meta list — mt-5 flex flex-col gap-2, rows with icon + text */}
+                            <dl className="mt-5 flex flex-col gap-2">
+                                <div className="flex items-center gap-1.5">
+                                    <div className="skeleton h-2 w-2 rounded-full shrink-0" />
+                                    <div className="skeleton h-3 w-16 rounded" />
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <div className="skeleton h-3.5 w-3.5 rounded shrink-0" />
+                                    <div className="skeleton h-3 w-20 rounded" />
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <div className="skeleton h-3.5 w-3.5 rounded shrink-0" />
+                                    <div className="skeleton h-3 w-24 rounded" />
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <div className="skeleton h-3 w-12 rounded" />
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <div className="skeleton h-3.5 w-3.5 rounded shrink-0" />
+                                    <div className="skeleton h-3 w-28 rounded" />
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <div className="skeleton h-3 w-24 rounded" />
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <div className="skeleton h-3 w-20 rounded" />
+                                </div>
+                            </dl>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -264,10 +328,10 @@ const ProjectDetailPage = () => {
                     </Link>
                 </motion.div>
 
-                {/* Two columns: README (left) and project card (right) start at same height. On mobile: project card first. */}
-                <div className="order-2 flex flex-col gap-6 sm:gap-8 lg:grid lg:grid-cols-[1fr_minmax(260px,320px)] lg:gap-x-6 lg:items-start">
-                    {/* Left column: README — order-2 on mobile so it stacks below project card */}
-                    <div className="flex flex-col gap-6 min-w-0 order-2 lg:order-1 lg:col-start-1">
+                {/* Two columns: README (left) and project card (right). Grid so they sit side-by-side on lg; order for mobile stack. */}
+                <div className="order-2 grid w-full grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[1fr_minmax(260px,320px)] lg:gap-x-6 lg:items-start">
+                    {/* Left column: README — row 2 on mobile, col 1 on lg */}
+                    <div className="flex flex-col gap-6 min-w-0 order-2 lg:order-none lg:col-start-1 lg:row-start-1">
                         {project.readme ? (
                             <motion.section
                                 variants={itemVariants}
@@ -302,10 +366,10 @@ const ProjectDetailPage = () => {
                         </motion.div>
                     </div>
 
-                    {/* Right column: project info card — order-1 on mobile so it stacks at top */}
+                    {/* Right column: project info card — row 1 on mobile, col 2 on lg */}
                     <motion.header
                         variants={itemVariants}
-                        className="rounded-2xl border border-white/10 bg-[var(--card-background)]/30 p-5 sm:p-6 order-1 lg:order-2 lg:sticky lg:top-6 lg:col-start-2 lg:border-l-[var(--accent-color)]/20 lg:border-l-2"
+                        className="rounded-2xl border border-white/10 bg-[var(--card-background)]/30 p-5 sm:p-6 order-1 lg:order-none lg:col-start-2 lg:row-start-1 lg:sticky lg:top-6 lg:border-l-[var(--accent-color)]/20 lg:border-l-2"
                     >
                     <div className="flex flex-col gap-4">
                         <div className="min-w-0">
@@ -394,6 +458,24 @@ const ProjectDetailPage = () => {
                             );
                         })()}
                     </div>
+
+                    {project.topics && project.topics.length > 0 && (
+                        <div className="mt-5 space-y-2">
+                            <span className="text-xs font-medium uppercase tracking-wider text-[var(--font-color-faded)]">
+                                Topics
+                            </span>
+                            <div className="flex flex-wrap gap-2">
+                                {project.topics.map((topic) => (
+                                    <span
+                                        key={topic}
+                                        className="inline-flex rounded-full border border-white/10 bg-[var(--accent-color-faded)]/30 px-3 py-1 text-xs font-medium text-[var(--font-color)]"
+                                    >
+                                        {topic}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     <dl className="mt-5 flex flex-col gap-2 text-sm text-[var(--font-color-faded)]">
                         {project.language && (

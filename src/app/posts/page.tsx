@@ -74,29 +74,34 @@ const PostsPage = () => {
 
   if (loading) {
     return (
-      <div className="relative min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-6 sm:pt-8 lg:pt-[6%] pb-24 lg:pb-[6%] overflow-hidden">
+      <div className="relative min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-6 sm:pt-8 lg:pt-[6%] pb-24 lg:pb-[6%] overflow-hidden" aria-busy="true">
         <div className="absolute top-0 right-0 w-[480px] h-[480px] rounded-full opacity-[0.04] blur-[100px] bg-[var(--accent-color)] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative flex flex-col gap-12 w-full max-w-4xl mx-auto">
-          <header className="flex flex-col gap-4">
-            <div className="h-9 w-40 rounded-lg bg-[#85858555] animate-pulse" />
-            <div className="h-px w-16 rounded-full bg-[var(--accent-color)]/50" />
-            <div className="h-4 w-72 rounded bg-[#85858555] animate-pulse" />
+          <header className="mb-4 flex items-start gap-3">
+            <div className="skeleton mt-0.5 h-9 w-9 shrink-0 rounded-lg" />
+            <div className="flex-1 space-y-2">
+              <div className="skeleton h-5 w-40 rounded" />
+              <div className="h-px w-16 rounded-full bg-[var(--accent-color)]/50" />
+              <div className="skeleton h-4 w-72 rounded" />
+            </div>
           </header>
-          <div className="grid gap-6 sm:gap-8">
+          <ul className="grid gap-6 sm:gap-8 list-none p-0 m-0">
             {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-white/10 bg-[var(--card-background)]/30 overflow-hidden"
-              >
-                <div className="h-44 sm:h-56 bg-[#85858555] animate-pulse" />
-                <div className="p-5 sm:p-6 space-y-3">
-                  <div className="h-6 w-4/5 rounded-lg bg-[#85858555] animate-pulse" />
-                  <div className="h-4 w-full rounded bg-[#85858555] animate-pulse" />
-                  <div className="h-3 w-28 rounded bg-[#85858555] animate-pulse" />
+              <li key={i}>
+                <div className="rounded-2xl border border-white/10 bg-[var(--card-background)]/30 overflow-hidden">
+                  <div className="relative w-full aspect-[2.4/1] sm:aspect-[3/1] overflow-hidden">
+                    <div className="skeleton absolute inset-0" />
+                  </div>
+                  <div className="p-5 sm:p-6 space-y-3">
+                    <div className="skeleton h-6 w-4/5 rounded-lg" />
+                    <div className="skeleton h-4 w-full rounded" />
+                    <div className="skeleton h-4 w-[85%] rounded" />
+                    <div className="skeleton h-3 w-28 rounded" />
+                  </div>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     );

@@ -73,25 +73,36 @@ const ProjectsPage = () => {
 
     if (loading) {
         return (
-            <div className="relative min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-6 sm:pt-8 lg:pt-[6%] pb-24 overflow-hidden">
+            <div className="relative min-h-[calc(100svh-100px)] px-4 sm:px-6 lg:px-[10%] pt-6 sm:pt-8 lg:pt-[6%] pb-24 overflow-hidden" aria-busy="true">
                 <div className="absolute top-0 right-0 w-[420px] h-[420px] rounded-full opacity-[0.04] blur-[90px] bg-[var(--accent-color)] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
                 <div className="relative max-w-5xl mx-auto flex flex-col gap-10">
                     <header className="mb-4 flex items-start gap-3">
-                        <div className="mt-0.5 h-9 w-9 shrink-0 rounded-lg bg-[#85858555] animate-pulse" />
-                        <div className="flex-1 space-y-2">
-                            <div className="h-5 w-28 rounded bg-[#85858555] animate-pulse" />
-                            <div className="h-4 w-72 rounded bg-[#85858555] animate-pulse" />
+                        <div className="skeleton mt-0.5 h-9 w-9 shrink-0 rounded-lg" />
+                        <div className="flex-1 space-y-2 min-w-0">
+                            <div className="skeleton h-5 w-28 rounded" />
+                            <div className="skeleton h-4 w-72 rounded" />
+                            <div className="skeleton h-9 w-full max-w-xs rounded-lg mt-3" />
                         </div>
                     </header>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {[1, 2, 3, 4, 5, 6].map((i) => (
                             <div
                                 key={i}
-                                className="rounded-2xl border border-white/10 bg-[var(--card-background)]/30 p-5 sm:p-6"
+                                className="rounded-2xl border border-white/10 bg-[var(--card-background)]/30 p-5 sm:p-6 flex flex-col"
                             >
-                                <div className="h-8 w-3/4 rounded bg-[#85858555] animate-pulse mb-3" />
-                                <div className="h-4 w-full rounded bg-[#85858555] animate-pulse mb-2" />
-                                <div className="h-4 w-2/3 rounded bg-[#85858555] animate-pulse" />
+                                <div className="flex items-start justify-between gap-3">
+                                    <div className="skeleton h-10 w-10 rounded-lg shrink-0" />
+                                    <div className="skeleton h-8 w-8 rounded-full shrink-0" />
+                                </div>
+                                <div className="mt-3 flex-1 min-w-0 space-y-1.5">
+                                    <div className="skeleton h-5 w-3/4 rounded" />
+                                    <div className="skeleton h-4 w-full rounded" />
+                                    <div className="skeleton h-4 w-2/3 rounded" />
+                                </div>
+                                <div className="mt-4 flex items-center gap-4">
+                                    <div className="skeleton h-4 w-12 rounded" />
+                                    <div className="skeleton h-4 w-14 rounded" />
+                                </div>
                             </div>
                         ))}
                     </div>

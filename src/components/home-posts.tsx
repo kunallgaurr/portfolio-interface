@@ -107,16 +107,17 @@ const HomePostsSidebar = () => {
 
     if (loading) {
         return (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4" aria-busy="true" aria-label="Loading latest posts">
                 {label}
-                <div className="flex flex-col gap-2">
-                    {[1, 2, 3].map((i) => (
-                        <div key={i} className="flex items-center gap-3 py-2">
-                            <div className="shrink-0 w-10 h-10 rounded-md bg-[#85858555] animate-pulse" />
-                            <div className="flex-1 space-y-1">
-                                <div className="h-3.5 w-3/4 rounded bg-[#85858555] animate-pulse" />
-                                <div className="h-3 w-16 rounded bg-[#85858555] animate-pulse" />
+                <div className="flex flex-col gap-0">
+                    {[1, 2, 3, 4].map((i) => (
+                        <div key={i} className="flex items-center gap-3 py-2 rounded-md -mx-2 px-2">
+                            <div className="skeleton shrink-0 w-10 h-10 rounded-md" />
+                            <div className="flex-1 space-y-1 min-w-0">
+                                <div className="skeleton h-3.5 w-3/4 rounded" />
+                                <div className="skeleton h-3 w-16 rounded" />
                             </div>
+                            <div className="skeleton shrink-0 w-[14px] h-[14px] rounded" />
                         </div>
                     ))}
                 </div>

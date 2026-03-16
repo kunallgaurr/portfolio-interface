@@ -40,13 +40,18 @@ const ProverbCard = () => {
 
   if (loading) {
     return (
-      <div className={cardClassName}>
-        <div className="h-3 w-28 rounded bg-[#85858555] animate-pulse shrink-0" />
+      <div className={cardClassName} aria-busy="true" aria-label="Loading proverb">
+        <div className="skeleton h-3 w-28 rounded shrink-0" />
         <div className="space-y-1.5 flex-1 min-h-0">
-          <div className="h-4 w-full rounded bg-[#85858555] animate-pulse" />
-          <div className="h-4 w-[90%] rounded bg-[#85858555] animate-pulse" />
+          <div className="skeleton h-4 w-full rounded" />
+          <div className="skeleton h-4 w-[95%] rounded" />
+          <div className="skeleton h-4 w-[88%] rounded" />
+          <div className="skeleton h-4 w-[70%] rounded" />
         </div>
-        <div className="h-3 w-20 rounded bg-[#85858555] animate-pulse shrink-0" />
+        <div className="flex items-center justify-between gap-2 shrink-0">
+          <div className="skeleton h-3 w-20 rounded" />
+          <div className="skeleton h-3 w-16 rounded" />
+        </div>
       </div>
     );
   }

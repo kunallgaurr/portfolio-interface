@@ -81,34 +81,31 @@ const ExperienceDetailPage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen px-[10%] py-[5%] pb-20">
+            <div className="min-h-screen px-[10%] py-[5%] pb-20" aria-busy="true">
                 <div className="max-w-2xl mx-auto flex flex-col gap-10">
-                    <div className="h-4 w-24 rounded bg-[#85858555] animate-pulse" />
+                    <div className="skeleton h-5 w-24 rounded" />
 
                     <div className="relative overflow-hidden rounded-2xl bg-[var(--card-background)] border border-white/5 p-8">
                         <div className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-[0.04] blur-3xl bg-[var(--accent-color)]" />
                         <div className="relative flex flex-col gap-4">
-                            <div className="h-4 w-40 rounded bg-[#85858555] animate-pulse" />
-                            <div className="h-8 w-64 rounded bg-[#85858555] animate-pulse" />
-                            <div className="h-5 w-40 rounded bg-[#85858555] animate-pulse" />
-                            <div className="h-6 w-20 rounded-full bg-[#85858555] animate-pulse" />
+                            <div className="skeleton h-4 w-32 rounded" />
+                            <div className="skeleton h-8 w-64 rounded" />
+                            <div className="skeleton h-5 w-40 rounded" />
+                            <div className="skeleton h-6 w-20 rounded-full" />
                         </div>
                     </div>
 
                     <div className="space-y-3">
-                        <div className="h-4 w-full rounded bg-[#85858555] animate-pulse" />
-                        <div className="h-4 w-[85%] rounded bg-[#85858555] animate-pulse" />
-                        <div className="h-4 w-[70%] rounded bg-[#85858555] animate-pulse" />
+                        <div className="skeleton h-4 w-full rounded" />
+                        <div className="skeleton h-4 w-[85%] rounded" />
+                        <div className="skeleton h-4 w-[70%] rounded" />
                     </div>
 
                     <div className="space-y-3">
-                        {[1, 2, 3].map((i) => (
+                        {[1, 2, 3, 4].map((i) => (
                             <div key={i} className="flex gap-3 items-center">
-                                <div className="h-1.5 w-1.5 rounded-full bg-[#85858555]" />
-                                <div
-                                    className="h-3 rounded bg-[#85858555] animate-pulse"
-                                    style={{ width: `${80 - i * 10}%` }}
-                                />
+                                <div className="skeleton h-1.5 w-1.5 rounded-full shrink-0" />
+                                <div className="skeleton h-3 rounded flex-1" style={{ maxWidth: `${85 - i * 8}%` }} />
                             </div>
                         ))}
                     </div>

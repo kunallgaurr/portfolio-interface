@@ -148,20 +148,18 @@ const WeatherCard = () => {
 
     if (isLoading) {
         return (
-            <div className={cardClassName}>
-                <div className="flex justify-between">
-                    <div className="h-5 w-32 rounded bg-[#85858555] animate-pulse" />
-                    <div className="h-5 w-5 rounded bg-[#85858555] animate-pulse" />
+            <div className={cardClassName} aria-busy="true" aria-label="Loading weather">
+                <div className="flex justify-between items-center">
+                    <div className="skeleton h-5 w-32 rounded" />
+                    <div className="skeleton h-5 w-5 rounded" />
                 </div>
                 <div className="mb-4 flex items-baseline gap-2">
-                    <div className="h-14 w-24 rounded bg-[#85858555] animate-pulse" />
-                    <div className="flex gap-1">
-                        <span className="text-[var(--font-color-faded)]">C</span>
-                        <span className="text-[var(--font-color-faded)]">/</span>
-                        <span className="text-[var(--font-color-faded)]">F</span>
+                    <div className="skeleton h-14 w-24 rounded" />
+                    <div className="flex gap-1 text-[var(--font-color-faded)] text-sm">
+                        <span>C</span><span>/</span><span>F</span>
                     </div>
                 </div>
-                <div className="h-5 w-40 rounded bg-[#85858555] animate-pulse" />
+                <div className="skeleton h-5 w-40 rounded" />
             </div>
         );
     }

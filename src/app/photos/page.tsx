@@ -116,11 +116,11 @@ const PhotosPage = () => {
                 </motion.header>
 
                 {images.length === 0 && loading ? (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px] grid-flow-dense">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px] grid-flow-dense" aria-busy="true" aria-label="Loading photos">
                         {Array.from({ length: PAGE_SIZE }).map((_, i) => (
                             <div
                                 key={i}
-                                className={`rounded-2xl bg-[#85858555] animate-pulse ${getBentoSize(i) === "md"
+                                className={`skeleton rounded-2xl ${getBentoSize(i) === "md"
                                     ? "col-span-2"
                                     : getBentoSize(i) === "lg"
                                         ? "row-span-2"

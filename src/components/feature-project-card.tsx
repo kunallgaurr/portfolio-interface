@@ -43,11 +43,13 @@ const FeatureProjectCard = () => {
 
     if (isLoading) {
         return (
-            <article className="flex flex-col gap-4">
+            <article className="flex flex-col gap-4" aria-busy="true" aria-label="Loading featured project">
                 <span className="text-sm font-medium text-[var(--font-color-faded)] uppercase tracking-wider">
                     Featured Project
                 </span>
-                <div className="h-40 w-full rounded-2xl bg-[#85858555] animate-pulse" />
+                <div className="relative w-full h-40 rounded-2xl overflow-hidden bg-[var(--card-background)]">
+                    <div className="skeleton absolute inset-0 rounded-2xl" />
+                </div>
                 <Link
                     href="/projects"
                     className="inline-flex items-center gap-1.5 text-sm text-[var(--font-color-faded)] hover:text-[var(--accent-color)] transition-colors w-fit"

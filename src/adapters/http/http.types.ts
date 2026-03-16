@@ -165,6 +165,7 @@ export namespace HttpTypes {
         pushedAt: string,
         readme: string,
         cloneUrl?: string | null,
-        sshUrl?: string | null
+        sshUrl?: string | null,
+        topics?: string[] | null
     }
 }

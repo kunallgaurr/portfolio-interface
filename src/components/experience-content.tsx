@@ -88,16 +88,22 @@ const ExperienceContent = () => {
 
     if (loading) {
         return (
-            <section className="flex flex-col gap-8 w-full max-w-2xl">
-                {[1, 2].map((i) => (
+            <section className="flex flex-col gap-8 w-full max-w-2xl" aria-busy="true" aria-label="Loading experience">
+                {[1, 2, 3].map((i) => (
                     <div key={i} className="flex items-stretch gap-4">
                         <div className="flex flex-col items-center pt-1">
-                            <div className="h-3 w-3 rounded-full bg-[#85858555]" />
-                            <div className="flex-1 w-px bg-[#85858555]" />
+                            <div className="skeleton h-3 w-3 rounded-full border-2 border-transparent" />
+                            <div className="skeleton flex-1 w-px min-h-[2rem]" />
                         </div>
-                        <div className="flex-1 rounded-lg border border-[#85858555] px-4 py-3 space-y-2">
-                            <div className="h-4 w-40 rounded bg-[#85858555] animate-pulse" />
-                            <div className="h-3 w-28 rounded bg-[#85858555] animate-pulse" />
+                        <div className="flex-1 rounded-lg border border-white/5 bg-[var(--card-background)]/60 px-4 py-3 flex items-center justify-between gap-3">
+                            <div className="flex flex-col gap-1 min-w-0">
+                                <div className="skeleton h-4 w-40 rounded" />
+                                <div className="skeleton h-3 w-28 rounded" />
+                            </div>
+                            <div className="flex flex-col items-end gap-1 shrink-0">
+                                <div className="skeleton h-4 w-12 rounded-full" />
+                                <div className="skeleton h-3 w-24 rounded" />
+                            </div>
                         </div>
                     </div>
                 ))}
