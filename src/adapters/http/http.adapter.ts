@@ -152,6 +152,71 @@ class HttpAdapter {
             throw error;
         }
     }
+
+    async getFeaturedProject(): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetFeaturedProject>> {
+        const params: HttpTypes.RequestParams = {
+            url: `/project/featured`,
+            method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getPosts(): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetLatestPosts[]>> {
+        const params: HttpTypes.RequestParams = {
+            url: '/posts',
+            method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getPost(slug: string): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetPost>> {
+        const params: HttpTypes.RequestParams = {
+            url: `/posts/${slug}`,
+            method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getProjects(): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetProjects[]>> {
+        const params: HttpTypes.RequestParams = {
+            url: '/projects',
+            method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getProject(slug: string): Promise<GlobalTypes.BaseApiResponse<HttpTypes.GetProject>> {
+        const params: HttpTypes.RequestParams = {
+            url: `/projects/${slug}`,
+            method: 'GET',
+        }
+
+        try {
+            return await this.call(params);
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default new HttpAdapter();

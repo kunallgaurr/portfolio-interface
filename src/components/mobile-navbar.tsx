@@ -46,13 +46,16 @@ const MobileNavbar = () => {
                     aria-expanded={isOpen}
                     aria-label={isOpen ? "Close navigation" : "Open navigation"}
                 >
-                    <Link href="/" className="font-medium text-[var(--font-color)]">kunalgaur.in</Link>
+                    <Link href="/" className="font-medium text-[var(--font-color)] text-lg">kunalgaur.in</Link>
                     <motion.span
                         animate={{ rotate: isOpen ? 90 : 0 }}
                         transition={{ type: "spring", stiffness: 260, damping: 20 }}
                         className="flex items-center justify-center rounded-full bg-[#85858555] p-1"
                     >
-                        {isOpen ? <X size={16} onClick={() => setIsOpen((prev) => !prev)}/> : <Hamburger size={16} onClick={() => setIsOpen((prev) => !prev)}/>}
+                        {isOpen ? 
+                            <X size={25} onClick={() => setIsOpen((prev) => !prev)} className="text-[var(--font-color)] text-lg"/> : 
+                            <Hamburger size={25} onClick={() => setIsOpen((prev) => !prev)} className="text-[var(--font-color)]"/>
+                        }
                     </motion.span>
                 </motion.button>
 
@@ -72,7 +75,7 @@ const MobileNavbar = () => {
                             <motion.div
                                 ref={sheetRef}
                                 initial={{ opacity: 0, y: 24 }}
-                                animate={{ opacity: 1, y: -10 }}
+                                animate={{ opacity: 1, y: -20 }}
                                 exit={{ opacity: 0, y: 24 }}
                                 transition={{ type: "spring", stiffness: 220, damping: 24 }}
                                 className="absolute left-[10px] right-[10px] bottom-14 z-10 rounded-2xl bg-[var(--card-background)]/98 border border-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.75)] backdrop-blur-md p-3 flex flex-col gap-3 w-[calc(100%-20px)]"

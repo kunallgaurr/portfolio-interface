@@ -106,4 +106,65 @@ export namespace HttpTypes {
         email: string;
         message: string;
     }
+
+    export interface GetFeaturedProject {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        title: string,
+        description: string,
+        image: string,
+    }
+
+    export interface GetLatestPosts {
+        id: string,
+        title: string,
+        slug: string,
+        brief: string,
+        publishedAt: string,
+        url: string,
+        imageUrl: string
+    }
+
+    export interface GetPost {
+        id: string,
+        title: string,
+        slug: string,
+        brief: string,
+        publishedAt: string,
+        url: string,
+        imageUrl: string,
+        content: string
+    }
+
+    export interface GetProjects {
+        id: number,
+        name: string,
+        fullName: string,
+        private: boolean,
+        url: string,
+        description: string | null,
+        size: number,
+        stargazersCount: number,
+        watchersCount: number
+    }
+
+    export interface GetProject {
+        id: number,
+        name: string,
+        fullName: string,
+        private: boolean,
+        url: string,
+        description: string | null,
+        size: number,
+        stargazersCount: number,
+        watchersCount: number,
+        language: string,
+        createdAt: string,
+        updatedAt: string,
+        pushedAt: string,
+        readme: string,
+        cloneUrl?: string | null,
+        sshUrl?: string | null
+    }
 }

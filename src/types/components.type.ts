@@ -102,5 +102,22 @@ export namespace ComponentTypes {
         disabled?: boolean;
     }
 
+    export interface Project {
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+        title: string,
+        description: string,
+        image: string,
+    }
 
+    export interface LatestPosts {
+        id: string,
+        title: string,
+        slug: string,
+        brief: string,
+        publishedAt: string,
+        url: string,
+        imageUrl: string
+    }
 } 

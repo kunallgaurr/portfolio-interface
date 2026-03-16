@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Client
 
-## Getting Started
+A personal portfolio site built with [Next.js](https://nextjs.org) (App Router), React 19, Tailwind CSS v4, and Framer Motion. It consumes a backend API for content and supports responsive layout, markdown/HTML READMEs, and clone URLs for projects.
 
-First, run the development server:
+## Tech stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16** (App Router)
+- **React 19**
+- **Tailwind CSS v4**
+- **Framer Motion** — animations and transitions
+- **Lucide React** — icons
+- **react-markdown** + **remark-gfm** + **rehype-raw** — markdown and HTML in posts/READMEs
+- **React Hook Form** + **Zod** — contact form validation
+
+## Getting started
+
+### Prerequisites
+
+- Node.js 18+
+- A running instance of the portfolio API (or mock backend)
+
+### Environment variables
+
+Create a `.env.local` in the project root with:
+
+```env
+NEXT_PUBLIC_API_BASE_URL=https://your-api.example.com
+NEXT_PUBLIC_SECURITY_KEY=your-secret-key
+NEXT_PUBLIC_SITE_URL=https://yoursite.com
+NEXT_PUBLIC_HOST=https://yoursite.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `NEXT_PUBLIC_API_BASE_URL` — base URL of the portfolio API (required for data).
+- `NEXT_PUBLIC_SECURITY_KEY` — API secret sent as `x-secret-key` header.
+- `NEXT_PUBLIC_SITE_URL` — canonical site URL (sitemap, robots, meta).
+- `NEXT_PUBLIC_HOST` — host used for assets (e.g. resume PDF).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Install and run
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000). The app hot-reloads as you edit.
 
-To learn more about Next.js, take a look at the following resources:
+### Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command       | Description              |
+|---------------|--------------------------|
+| `npm run dev` | Start dev server         |
+| `npm run build` | Production build       |
+| `npm run start` | Run production server |
+| `npm run lint`  | Run ESLint             |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+- `src/app/` — App Router pages and layouts (home, about, projects, posts, photos, contact, etc.).
+- `src/components/` — Reusable UI (navbar, cards, forms, content sections).
+- `src/adapters/http/` — API client and types for weather, quotes, experience, projects, posts, contact, etc.
+- `src/utils/` — Helpers and constants.
+- `src/types/` — Shared TypeScript types.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Main features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Home** — Hero, date, weather, featured project, latest posts.
+- **About** — Bio and experience timeline with detail pages per role.
+- **Projects** — List with search; detail page with README (markdown/HTML), meta, and clone (HTTPS/SSH) with copy.
+- **Posts** — List and per-post pages with markdown content.
+- **Photos** — Bento-style gallery with scroll-based loading.
+- **Contact** — Form with validation.
+- **Picks, Readme, Privacy policy** — Static/content pages.
+
+## Deploy
+
+Build and run in production:
+
+```bash
+npm run build
+npm run start
+```
+
+You can deploy to [Vercel](https://vercel.com), or any Node host that supports Next.js. Set the same environment variables in your deployment dashboard.
+
+## Learn more
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Framer Motion](https://www.framer.com/motion/)
