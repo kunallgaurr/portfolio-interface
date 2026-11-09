@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Azulejo Hall</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1440px;height:900px;background:#061018;overflow:hidden;
+ font-family:"Helvetica Neue",Arial,sans-serif;color:#eaf4ff}
+.glaze{position:absolute;inset:0;background:#07131d;
+ background-image:linear-gradient(#0d2740 1px,transparent 1px),
+  linear-gradient(90deg,#0d2740 1px,transparent 1px);
+ background-size:60px 60px}
+.sheen{position:absolute;inset:0;
+ background:radial-gradient(circle at 25% 15%,rgba(60,140,230,.22),transparent 60%)}
+.frieze{position:absolute;left:0;right:0;height:60px;
+ background-image:repeating-linear-gradient(90deg,#1f6fc4 0 2px,transparent 2px 14px,
+  #1f6fc4 14px 16px,transparent 16px 30px);opacity:.5}
+.panel{position:absolute;top:150px;left:60px;width:780px;height:540px;
+ border:2px solid #2f87d8;background:rgba(10,38,64,.5)}
+.panel::before{content:"";position:absolute;inset:10px;border:1px solid #1b5c9b}
+.cart{position:absolute;bottom:-1px;left:50%;transform:translateX(-50%) translateY(50%);
+ background:#07131d;border:2px solid #2f87d8;padding:10px 34px;
+ font-size:13px;letter-spacing:.3em;color:#9ed0ff;white-space:nowrap}
+.name{position:absolute;top:168px;right:60px;width:440px;text-align:right}
+.name h1{font-size:72px;line-height:.98;font-weight:700;letter-spacing:-.02em;
+ color:#f3faff}
+.name p{margin-top:22px;font-size:17px;line-height:1.6;color:#a9cdeb}
+.name .kick{font-size:12px;letter-spacing:.4em;color:#4aa3ea;margin-bottom:20px}
+.blank{position:absolute;top:470px;right:60px;width:200px;height:200px;
+ border:1px dashed #28618f;color:#3f7cae;font-size:11px;letter-spacing:.2em;
+ display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
+</style></head><body>
+<div class="glaze"></div><div class="sheen"></div>
+<div class="frieze" style="top:0"></div>
+<div class="frieze" style="bottom:0"></div>
+<div class="panel">
+ <svg width="780" height="540" viewBox="0 0 780 540" fill="none"
+  stroke="#4aa3ea" stroke-width="2" opacity=".95">
+  <path d="M90 430 C180 300 240 390 330 250 C410 130 500 250 600 150"
+   stroke-width="3"/>
+  <circle cx="330" cy="250" r="54" fill="rgba(47,135,216,.25)"/>
+  <circle cx="600" cy="150" r="34" fill="rgba(47,135,216,.18)"/>
+  <circle cx="90" cy="430" r="26" fill="rgba(47,135,216,.3)"/>
+  <path d="M330 304 L330 470 M600 184 L600 470 M90 456 L90 470"/>
+  <path d="M60 470 L720 470"/>
+  <g stroke="none" fill="#9ed0ff" font-family="Helvetica,Arial" font-size="13"
+     letter-spacing="2">
+   <text x="52" y="500">NFTICALLY</text><text x="286" y="500">SIMPLYFI</text>
+   <text x="556" y="500">DELTATECH</text>
+  </g>
+  <path d="M150 90 q30 -30 60 0 q30 30 60 0 q30 -30 60 0" stroke-width="1.5"
+   opacity=".5"/>
+ </svg>
+ <div class="cart">THE WORK, PANEL I &#8212; MONEY &amp; IDENTITY</div>
+</div>
+<div class="name"><div class="kick">PAINTED IN COBALT</div>
+ <h1>Kunal Gaur</h1>
+ <p>Software Developer 2. Payments, identity and distributed systems,
+  told panel by panel.</p></div>
+<div class="blank">PANEL AWAITING<br>ITS PAINTER</div>
+</body></html>

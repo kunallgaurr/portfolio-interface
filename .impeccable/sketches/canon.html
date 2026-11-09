@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Category standard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1440px;height:900px;background:#0a0a0b;color:#fafafa;
+ font-family:"Helvetica Neue",Arial,sans-serif;overflow:hidden}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between;
+ padding:0 56px;border-bottom:1px solid #1b1b1f}
+.nav .m{font-size:15px;font-weight:600}
+.nav .l{display:flex;gap:30px;font-size:14px;color:#8a8a93}
+.glow{position:absolute;top:-180px;left:50%;transform:translateX(-50%);
+ width:900px;height:460px;border-radius:50%;
+ background:radial-gradient(circle,rgba(59,130,246,.3),transparent 70%);
+ filter:blur(40px)}
+.hero{position:relative;text-align:center;padding:124px 0 0}
+.pill{display:inline-block;border:1px solid #27272d;border-radius:999px;
+ padding:7px 16px;font-size:13px;color:#a1a1aa;margin-bottom:30px}
+.pill i{color:#3b82f6;font-style:normal}
+h1{font-size:76px;line-height:1.08;font-weight:700;letter-spacing:-.035em}
+h1 span{background:linear-gradient(90deg,#60a5fa,#a78bfa);
+ -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{margin:26px auto 0;max-width:600px;font-size:19px;line-height:1.6;
+ color:#a1a1aa}
+.btns{margin-top:38px;display:flex;gap:14px;justify-content:center}
+.b1{background:#fafafa;color:#0a0a0b;padding:13px 26px;border-radius:9px;
+ font-size:15px;font-weight:500}
+.b2{border:1px solid #27272d;padding:13px 26px;border-radius:9px;font-size:15px;
+ color:#e4e4e7}
+.cards{margin-top:76px;padding:0 56px;display:grid;
+ grid-template-columns:repeat(3,1fr);gap:22px}
+.c{border:1px solid #1b1b1f;border-radius:14px;padding:26px;height:206px;
+ background:linear-gradient(#111114,#0c0c0e);text-align:left}
+.c .ic{width:40px;height:40px;border-radius:9px;background:#16233c;
+ border:1px solid #1e3a6b;margin-bottom:18px}
+.c h3{font-size:17px;font-weight:600;margin-bottom:10px}
+.c p{font-size:14px;line-height:1.6;color:#8a8a93}
+</style></head><body>
+<div class="nav"><div class="m">kunalgaur.in</div>
+ <div class="l"><span>About</span><span>Experience</span><span>Skills</span>
+  <span>Contact</span></div></div>
+<div class="hero"><div class="glow"></div>
+ <div class="pill"><i>&#9679;</i> Available for opportunities</div>
+ <h1>Hi, I&#8217;m Kunal &#8212; I build<br><span>scalable backend systems</span></h1>
+ <p class="sub">Software Developer 2 with experience across payments, identity
+  and distributed systems using TypeScript, Node.js and NestJS.</p>
+ <div class="btns"><div class="b1">Get in touch</div>
+  <div class="b2">View experience</div></div>
+ <div class="cards">
+  <div class="c"><div class="ic"></div><h3>Payments &amp; Billing</h3>
+   <p>Stripe and Razorpay integrations, webhooks, escrow and automated
+    subscription lifecycles.</p></div>
+  <div class="c"><div class="ic"></div><h3>Identity &amp; Access</h3>
+   <p>A Keycloak IAM platform as the single source of truth for users, roles
+    and permissions.</p></div>
+  <div class="c"><div class="ic"></div><h3>Distributed Systems</h3>
+   <p>Event-driven microservices with Kafka, RabbitMQ, gRPC and Redis-backed
+    real-time state.</p></div>
+ </div>
+</div></body></html>

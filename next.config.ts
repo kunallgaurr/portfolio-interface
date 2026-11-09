@@ -1,9 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // The site is a single static page: `next build` writes it to ./out.
-  output: "export",
-  reactCompiler: true,
+	cacheComponents: true,
+	partialPrefetching: true,
+	turbopack: {
+		rules: {
+			"*.css": {
+				loaders: ["@tailwindcss/turbopack"],
+				as: "*.css",
+			},
+		},
+	},
 };
 
 export default nextConfig;

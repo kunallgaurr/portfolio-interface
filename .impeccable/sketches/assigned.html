@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Tracking Pass</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1440px;height:900px;background:#03080f;color:#dce6f2;
+ font-family:"Helvetica Neue",Arial,sans-serif;overflow:hidden;position:relative}
+.hatch{position:absolute;inset:0;opacity:.5;
+ background-image:radial-gradient(#13304d 1px,transparent 1px);
+ background-size:14px 14px}
+.strip{position:absolute;top:0;left:0;right:0;height:40px;display:flex;
+ align-items:center;justify-content:space-between;padding:0 40px;
+ font-family:"SFMono-Regular",Menlo,monospace;font-size:11px;letter-spacing:.14em;
+ color:#5f86ad;border-bottom:1px solid #11283f}
+.wrap{position:absolute;top:40px;left:0;right:0;bottom:0;padding:70px 40px 0}
+h1{font-size:118px;line-height:.86;letter-spacing:-.045em;font-weight:700;
+ color:#f2f7ff}
+h1 em{display:block;font-style:normal;color:#8fb6d8}
+.role{margin-top:26px;font-family:Menlo,monospace;font-size:12px;
+ letter-spacing:.34em;color:#47d5ff}
+.claim{margin-top:22px;max-width:560px;font-size:19px;line-height:1.55;
+ color:#9db4cc}
+.meta{position:absolute;top:110px;right:40px;width:300px;
+ font-family:Menlo,monospace;font-size:11px;line-height:2.1;color:#5f86ad;
+ border-left:1px solid #11283f;padding-left:18px}
+.meta b{color:#dce6f2;font-weight:400}
+.plot{position:absolute;left:40px;right:40px;bottom:96px;height:300px}
+.yl{position:absolute;left:0;top:-18px;font-family:Menlo,monospace;
+ font-size:10px;letter-spacing:.18em;color:#436b90}
+.foot{position:absolute;bottom:34px;left:40px;display:flex;gap:30px;
+ font-family:Menlo,monospace;font-size:11px;letter-spacing:.16em}
+.foot a{color:#47d5ff;text-decoration:none;border-bottom:1px solid #1d4a6b}
+.foot span{color:#436b90}
+</style></head><body>
+<div class="hatch"></div>
+<div class="strip"><span>STATION DSS&#8209;01 &#183; NEW DELHI 28.61&#176;N 77.20&#176;E</span>
+<span>PASS 0471 &#183; ACQUISITION NOMINAL</span><span>UTC 2026&#8209;11&#8209;09 14:22:07</span></div>
+<div class="wrap">
+ <h1>KUNAL<em>GAUR</em></h1>
+ <div class="role">SOFTWARE DEVELOPER 2 &#183; HE/HIM</div>
+ <p class="claim">I build the backend systems that move money, verify identity
+  and keep distributed services honest &#8212; end to end, with the frontend
+  range to finish them.</p>
+ <div class="meta">
+  <div>BAND <b>TypeScript / Node / NestJS</b></div>
+  <div>TRANSPORT <b>Kafka &#183; RabbitMQ &#183; gRPC</b></div>
+  <div>STATE <b>Redis &#183; MySQL</b></div>
+  <div>UPTIME <b>5 roles &#183; 2023&#8211;present</b></div>
+ </div>
+ <div class="plot">
+  <div class="yl">SIGNAL STRENGTH &#8212; ROLE BY ROLE</div>
+  <svg width="1360" height="300" viewBox="0 0 1360 300">
+   <g stroke="#11283f" stroke-width="1">
+    <line x1="0" y1="250" x2="1360" y2="250"/>
+    <line x1="0" y1="188" x2="1360" y2="188" stroke-dasharray="2 6"/>
+    <line x1="0" y1="126" x2="1360" y2="126" stroke-dasharray="2 6"/>
+    <line x1="0" y1="64" x2="1360" y2="64" stroke-dasharray="2 6"/>
+   </g>
+   <path d="M0 236 L150 236 L230 196 L420 196 L500 150 L700 150 L780 104
+    L1010 104 L1090 56 L1360 56" fill="none" stroke="#47d5ff"
+    stroke-width="2.5"/>
+   <path d="M0 236 L150 236 L230 196 L420 196 L500 150 L700 150 L780 104
+    L1010 104 L1090 56 L1360 56 L1360 250 L0 250 Z" fill="#47d5ff"
+    opacity=".07"/>
+   <g fill="#f2f7ff">
+    <circle cx="150" cy="236" r="4"/><circle cx="420" cy="196" r="4"/>
+    <circle cx="700" cy="150" r="4"/><circle cx="1010" cy="104" r="4"/>
+    <circle cx="1090" cy="56" r="5"/>
+   </g>
+   <g font-family="Menlo,monospace" font-size="11" fill="#9db4cc"
+      letter-spacing="1.5">
+    <text x="18" y="272">2023 NFTICALLY</text>
+    <text x="250" y="272">2023 SIMPLYFI &#183; INTERN</text>
+    <text x="540" y="272">2024 SIMPLYFI</text>
+    <text x="820" y="272">2024 DELTATECH GAMING</text>
+    <text x="1130" y="272">2026 MONO SOLUTIONS</text>
+   </g>
+  </svg>
+ </div>
+ <div class="foot"><span>END OF PASS &#8212;</span><a>LINKEDIN</a>
+  <a>GAURKUNAL40@GMAIL.COM</a><a>GITHUB</a></div>
+</div></body></html>

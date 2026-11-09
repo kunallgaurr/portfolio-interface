@@ -1,0 +1,141 @@
+{
+	"basics": {
+		"name": "Kunal Gaur",
+		"pronouns": "He/Him",
+		"headline": "SDE 2",
+		"location": "New Delhi, Delhi, India",
+		"linkedin": "https://www.linkedin.com/in/kunal-gaur-connect",
+		"summary": "I am a developer with experience in building scalable and efficient backend and frontend systems using TypeScript, Node.js, Nest.js, Express.js, React.js, and Next.js. I work with both SQL and NoSQL databases and have hands-on experience with Redis, RabbitMQ, Apache Kafka, and Grafana. My focus is on clean architecture, microservices, and building reliable systems."
+	},
+	"experience": [
+		{
+			"title": "Software Developer 2",
+			"company": "Mono Solutions",
+			"type": "Full-time",
+			"start": "2026-01",
+			"end": null,
+			"location": "Copenhagen, Denmark",
+			"workMode": "Remote",
+			"highlights": [
+				"Built a central account management platform where users manage their subscriptions. Integrated Stripe for payments and handled its webhooks to keep billing and subscription states in sync.",
+				"Set up scheduled jobs that automatically suspend or terminate subscriptions based on their billing status, which cut down on manual work for the team.",
+				"Migrated a serverless AWS Lambda function to RESTful APIs, making the service easier to maintain and extend.",
+				"Developed a feature in the website editor that lets users save sections they've already designed and reuse them across their site while following its global styles. Worked closely with iframes to make it run smoothly, and it turned out to be one of the more useful additions to the editor.",
+				"Owned the changes to the account platform needed to onboard a new partner, adapting the flow to their needs and delivering it on time so the integration went smoothly.",
+				"Contributed to a new partner dashboard for managing subscriptions and teams, helping move partners off our legacy systems.",
+				"Planned and built a new identity and access management system on Keycloak, which now serves as the single source of truth for all users, role hierarchy and permissions."
+			]
+		},
+		{
+			"title": "Software Developer 2",
+			"company": "Adaan Digital Solutions",
+			"type": "Full-time",
+			"start": "2026-01",
+			"end": null,
+			"location": "New Delhi, India",
+			"workMode": "Remote",
+			"highlights": []
+		},
+		{
+			"title": "Software Engineer",
+			"company": "Deltatech Gaming Limited",
+			"type": "Full-time",
+			"start": "2024-11",
+			"end": "2025-09",
+			"location": "Gurugram, Haryana, India",
+			"workMode": "On-site",
+			"highlights": [
+				"Built and optimized event-driven microservices to manage high-volume transactional workflows, focusing on core gameplay operations.",
+				"Worked extensively with Redis data structures including timeseries, sorted sets, hashes, and JSON to support real-time features and state management.",
+				"Integrated and maintained messaging systems using Kafka and RabbitMQ for reliable inter-service communication in a distributed architecture.",
+				"Led implementation of gRPC for service communication, conducted a successful POC, and facilitated internal knowledge-sharing sessions; also contributed to analytical insights by writing complex transactional queries.",
+				"Designed and implemented a robust issue reporting system that captured device details, app version, and network conditions, significantly improving root cause analysis and debugging efficiency.",
+				"Developed a real-time validation mechanism to detect and prevent colluding users from participating in the same session, enhancing platform integrity and fairness.",
+				"Built an audit logging framework to track collusion-related events, identifying involved users and triggers, with the data integrated into BI pipelines for further analysis."
+			]
+		},
+		{
+			"title": "Software Engineer",
+			"company": "SimplyFI",
+			"type": "Full-time",
+			"start": "2024-05",
+			"end": "2024-11",
+			"location": "Bengaluru, Karnataka, India",
+			"workMode": "On-site",
+			"highlights": [
+				"Built a stable, tokenized asset marketplace from the ground up, ensuring secure asset handling and fast performance, including optimized filtering with sub-second response times.",
+				"Integrated Razorpay's financial APIs for payouts, refunds, merchant onboarding, and bank account verification, enhancing transactional capabilities.",
+				"Implemented an escrow-based system to enable transparent and trustworthy transactions between multiple stakeholders.",
+				"Developed a full-featured KYC service supporting verification of Aadhar, PAN, Passport, and Driver's License, ensuring regulatory compliance.",
+				"Created a communication and notification service using AWS SNS, supporting dynamic email/SMS notifications for invoices, billing, promotions, and user verification.",
+				"Integrated AWS S3 for secure file/document storage and automated generation of invoices and bills for user-facing operations.",
+				"Designed and implemented a role-based access control system to manage permissions across users, admins, and supervisors (SPVs).",
+				"Converted internship into a full-time role, demonstrating ownership and end-to-end delivery of key production services involving blockchain and fintech use cases."
+			]
+		},
+		{
+			"title": "Software Engineer Intern",
+			"company": "SimplyFI",
+			"type": "Internship",
+			"start": "2023-10",
+			"end": "2024-04",
+			"location": "Bengaluru, Karnataka, India",
+			"workMode": "On-site",
+			"highlights": [
+				"Led the integration of Sinch Chatlayer, successfully delivering three WhatsApp bots and one Facebook Messenger chatbot with dynamic, end-to-end conversational flows.",
+				"Built a role-based analytics dashboard to track user onboarding and chat flow behavior, including invite-only authentication and verification for secure access.",
+				"Implemented session management for chatbots, ensuring chat continuity and proper session closure across platforms."
+			]
+		},
+		{
+			"title": "Software Engineer Intern",
+			"company": "NFTICALLY",
+			"type": "Internship",
+			"start": "2023-06",
+			"end": "2023-08",
+			"location": "Gurugram, Haryana, India",
+			"workMode": "Remote",
+			"highlights": [
+				"Developed and deployed serverless functions using AWS Lambda and TypeScript, enhancing backend scalability.",
+				"Utilized OpenAI's GPT-4 API to generate AI-driven conversational data for Kamoto.ai, a virtual celebrity chat platform.",
+				"Wrote and optimized SQL queries to efficiently manage and retrieve data, improving dynamic AI interactions."
+			]
+		}
+	],
+	"education": [
+		{
+			"institution": "Guru Gobind Singh Indraprastha University",
+			"degree": "Bachelor of Technology (BTech)",
+			"field": "Electrical, Electronics and Communications Engineering",
+			"start": "2019-08",
+			"end": "2023-08"
+		},
+		{
+			"institution": "Sri Venkateshwar International School",
+			"degree": "Higher Secondary Education",
+			"field": "Science",
+			"start": "2017-04",
+			"end": "2019-04"
+		},
+		{
+			"institution": "Bal Bharati Public School",
+			"degree": "Secondary Education",
+			"start": "2005-03",
+			"end": "2017-03"
+		}
+	],
+	"skills": {
+		"languages": ["TypeScript", "JavaScript", "SQL"],
+		"backend": ["Node.js", "NestJS", "Express.js", "REST APIs", "gRPC", "Microservices", "Event-driven architecture"],
+		"frontend": ["React.js", "Next.js"],
+		"databases": ["MySQL", "SQL & NoSQL databases", "Redis"],
+		"messaging": ["Apache Kafka", "RabbitMQ"],
+		"cloud": ["AWS Lambda", "AWS S3", "AWS SNS"],
+		"integrations": ["Stripe", "Razorpay", "Keycloak", "OpenAI GPT-4 API", "Sinch Chatlayer"],
+		"observability": ["Grafana"]
+	},
+	"stats": {
+		"connections": "500+",
+		"followers": 841
+	}
+}

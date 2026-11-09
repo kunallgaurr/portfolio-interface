@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Cyanotype Sheet</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1440px;height:900px;background:#071a33;overflow:hidden}
+.sheet{position:absolute;inset:0;background:#0b2545;
+ background-image:radial-gradient(circle at 30% 20%,#14355f 0%,#0b2545 55%,#071a33 100%)}
+.grain{position:absolute;inset:0;opacity:.28;
+ background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px)}
+.border{position:absolute;inset:26px;border:1px solid rgba(214,232,255,.45)}
+.border::before{content:"";position:absolute;inset:9px;
+ border:1px solid rgba(214,232,255,.18)}
+.name{position:absolute;top:66px;left:66px;color:#eaf3ff;font-family:Arial,sans-serif;
+ font-size:76px;font-weight:700;letter-spacing:.02em;line-height:.95}
+.name small{display:block;font-size:13px;letter-spacing:.46em;font-weight:400;
+ margin-top:18px;color:#b7d4f2}
+.claim{position:absolute;top:250px;left:66px;width:420px;color:#cfe2f7;
+ font-family:Arial,sans-serif;font-size:17px;line-height:1.6}
+.dwg{position:absolute;top:190px;right:80px}
+.title{position:absolute;right:36px;bottom:36px;width:430px;
+ border:1px solid rgba(214,232,255,.45);color:#dcebfd;
+ font-family:Menlo,monospace;font-size:11px;letter-spacing:.1em}
+.title div{display:flex;border-bottom:1px solid rgba(214,232,255,.25)}
+.title div:last-child{border-bottom:0}
+.title span{padding:9px 12px}
+.title span:first-child{width:130px;color:#8fb6dd;
+ border-right:1px solid rgba(214,232,255,.25)}
+.reg{position:absolute;width:20px;height:20px}
+.reg::before,.reg::after{content:"";position:absolute;background:rgba(214,232,255,.6)}
+.reg::before{left:0;right:0;top:9px;height:1px}
+.reg::after{top:0;bottom:0;left:9px;width:1px}
+</style></head><body>
+<div class="sheet"></div><div class="grain"></div><div class="border"></div>
+<div class="reg" style="top:44px;left:44px"></div>
+<div class="reg" style="top:44px;right:44px"></div>
+<div class="reg" style="bottom:44px;left:44px"></div>
+<div class="name">KUNAL GAUR<small>SOFTWARE DEVELOPER 2</small></div>
+<p class="claim">I build the backend systems that move money, verify identity
+ and keep distributed services honest &#8212; drawn, dimensioned and built
+ end to end.</p>
+<svg class="dwg" width="600" height="480" viewBox="0 0 600 480"
+ fill="none" stroke="#dcebfd" stroke-width="1.25">
+ <rect x="40" y="40" width="150" height="74"/>
+ <rect x="40" y="200" width="150" height="74"/>
+ <rect x="40" y="360" width="150" height="74"/>
+ <rect x="300" y="190" width="170" height="96" stroke-width="2"/>
+ <circle cx="520" cy="238" r="46"/>
+ <path d="M190 77 L300 212 M190 237 L300 238 M190 397 L300 264"/>
+ <path d="M470 238 L474 238"/>
+ <g stroke-dasharray="4 4" opacity=".55">
+  <path d="M40 24 L190 24 M40 16 L40 32 M190 16 L190 32"/>
+  <path d="M300 300 L470 300 M300 292 L300 308 M470 292 L470 308"/>
+ </g>
+ <g stroke="none" fill="#dcebfd" font-family="Menlo,monospace" font-size="10"
+    letter-spacing="1.2">
+  <text x="52" y="82">STRIPE / RAZORPAY</text><text x="52" y="242">KEYCLOAK IAM</text>
+  <text x="52" y="402">KAFKA / RABBITMQ</text><text x="312" y="244">SERVICE LAYER</text>
+  <text x="494" y="242">REDIS</text>
+  <text x="86" y="19">150</text><text x="372" y="295">170</text>
+ </g>
+ <g stroke="none" fill="#8fb6dd" font-family="Menlo,monospace" font-size="9">
+  <text x="300" y="330">SECTION A&#8209;A</text>
+ </g>
+</svg>
+<div class="title">
+ <div><span>DRAWN BY</span><span>K. GAUR</span></div>
+ <div><span>SHEET</span><span>01 OF 05 &#8212; EXPERIENCE</span></div>
+ <div><span>SCALE</span><span>1:1 &#183; NEW DELHI</span></div>
+ <div><span>CONTACT</span><span>LINKEDIN &#183; EMAIL &#183; GITHUB</span></div>
+</div></body></html>
